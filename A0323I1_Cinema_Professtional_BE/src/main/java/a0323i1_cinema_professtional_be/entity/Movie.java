@@ -33,9 +33,9 @@ public class Movie {
     private String movieDirector;
     @Column(name = "movie_duration")
     private int movieDuration;
-    @Column(name = "movie_trailer")
+    @Column(name = "movie_trailer", columnDefinition = "TEXT")
     private String movieTrailer;
-    @Column(name = "movie_image")
+    @Column(name = "movie_image", columnDefinition = "TEXT")
     private String movieImage;
     @Column(name = "movie_detail",columnDefinition = "TEXT")
     private String movieDetail;
@@ -47,6 +47,6 @@ public class Movie {
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
     @JoinTable(name = "employe_movie",joinColumns = @JoinColumn(name = "movie_id",referencedColumnName = "movie_id"),
-               inverseJoinColumns = @JoinColumn(name = "employee_id",referencedColumnName = "employee_id"))
+            inverseJoinColumns = @JoinColumn(name = "employee_id",referencedColumnName = "employee_id"))
     private List<Employee> employees;
 }
