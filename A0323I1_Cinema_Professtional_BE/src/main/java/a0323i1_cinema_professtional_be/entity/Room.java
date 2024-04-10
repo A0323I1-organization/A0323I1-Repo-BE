@@ -25,8 +25,6 @@ public class Room {
     @Column(name = "room_detail")
     private String roomDetail;
 
-    @OneToMany(mappedBy = "room")
-    private List<Seat> seats;
 
     @OneToMany(mappedBy = "room")
     private List<CalendarShow> calendarShows;
