@@ -26,10 +26,11 @@ public class CalendarShow {
     @ManyToOne
     @JoinColumn(name = "room_id",referencedColumnName = "room_id")
     private Room room;
+
     @ManyToOne
     @JoinColumn(name = "show_time_id",referencedColumnName = "show_time_id")
     private ShowTime showTime;
 
     @OneToMany(mappedBy = "calendarShow")
-    private List<Ticket> ticketList;
+    private List<Seat> ticketList;
 }

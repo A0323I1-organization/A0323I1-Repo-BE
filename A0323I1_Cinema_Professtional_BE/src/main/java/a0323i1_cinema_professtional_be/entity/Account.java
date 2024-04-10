@@ -24,6 +24,7 @@ public class Account {
     private String password;
 
     private String email;
+    private boolean status;
 
     @ManyToOne
     @JoinColumn(name = "role_id",referencedColumnName = "role_id")
