@@ -31,6 +31,7 @@ public class Customer {
     @Column(name = "phone",columnDefinition = "VARCHAR(28)")
     private String phone;
     private String address;
+    private int point;
     @ManyToOne
     @JoinColumn(name = "customer_account_id",referencedColumnName = "account_id")
     private Account account;
