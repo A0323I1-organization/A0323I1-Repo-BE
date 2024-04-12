@@ -47,7 +47,7 @@ public class Movie {
     private List<CalendarShow> calendarShows;
 
     @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinTable(name = "employe_movie",joinColumns = @JoinColumn(name = "movie_id",referencedColumnName = "movie_id"),
+    @JoinTable(name = "employee_movie",joinColumns = @JoinColumn(name = "movie_id",referencedColumnName = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "employee_id",referencedColumnName = "employee_id"))
     private List<Employee> employees;
 }
