@@ -10,12 +10,19 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.List;
 
 @Repository
 @Transactional
 public interface MovieRepository extends JpaRepository<Movie,Integer> {
-    void saveMovie();
+    @Modifying
+    @Query(value = "insert INTO movie (movie_name, movie_start_day, movie_end_day, movie_actor, movie_manufacturer, movie_director, movie_duration, movie_trailer, movie_image, movie_detail, movie_version) VALUES(?,?,?,?,?,?,?,?,?,?,?)",nativeQuery = true)
+    void saveMovie(String movieName, Date movieStartDay, Date movieEndDay, String movieActor, String movieManufacturer, String movieDirector, int movieDuration, String movieTrailer, String movieImage, String movieDetail, boolean movieVersion);
+    @Modifying
+    @Query(nativeQuery = true, value = "")
+    void updateMovieById(String movieName, Date movieStartDay, Date movieEndDay, String movieActor, String movieManufacturer, String movieDirector, int movieDuration, String movieTrailer, String movieImage, String movieDetail, boolean movieVersion, int movie_id);
     @Modifying
     void deleteMovieById(int id);
     @Query(value = "select * from movie where movie_id = :id ", nativeQuery = true)
