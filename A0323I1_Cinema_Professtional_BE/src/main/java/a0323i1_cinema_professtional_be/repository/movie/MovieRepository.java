@@ -1,5 +1,6 @@
 package a0323i1_cinema_professtional_be.repository.movie;
 
+import a0323i1_cinema_professtional_be.dto.MovieProjection;
 import a0323i1_cinema_professtional_be.entity.Movie;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -11,14 +12,6 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 
-
-@Repository
-@Transactional
-public interface MovieRepository extends JpaRepository<Movie, Integer> {
-//    void saveMovie();
-
-
-    //Xóa
 import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
@@ -54,4 +47,10 @@ public interface MovieRepository extends JpaRepository<Movie,Integer> {
             "join movie_type_detail t on t.movie_id = m.movie_id "+
             "join movie_type mt on mt.movie_type_id = t.movie_type_id", nativeQuery = true)
     Page<Movie> findAllMovie(Pageable pageable);
+
+    @Query(value = "select m.movieId as movieId, m.movieName as movieName, m.movieImage as movieImage from Movie as m")
+    List<MovieProjection> findAllMovieProjection();
+
+    @Query(value = "select m.movieId as movieId, m.movieName as movieName, m.movieImage as movieImage from Movie as m where m.movieName like :movie_name")
+    List<MovieProjection> findMovieByMovieName(@Param("movie_name") String movieName);
 }
