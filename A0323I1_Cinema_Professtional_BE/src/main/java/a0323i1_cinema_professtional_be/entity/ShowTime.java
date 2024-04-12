@@ -6,8 +6,10 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.sql.Time;
 import java.util.Date;
 import java.util.List;
+import java.util.Timer;
 
 @Data
 @NoArgsConstructor
@@ -22,7 +24,7 @@ public class ShowTime {
     @Column(name = "show_date",columnDefinition = "DATE")
     private Date showDate;
     @Column(name = "movie_time")
-    private String movieTime;
+    private Time movieTime;
 
     @OneToMany(mappedBy = "showTime")
     private List<CalendarShow> calendarShows;

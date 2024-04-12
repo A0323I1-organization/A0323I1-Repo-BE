@@ -18,9 +18,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
-    private int EmployeeId;
-    @Column(name = "image",columnDefinition = "TEXT")
-    private String image;
+    private int employeeId;
     @Column(name = "birth_day",columnDefinition = "DATE")
     private Date birthday;
     private boolean gender;
@@ -33,6 +31,8 @@ public class Employee {
     @Column(name = "phone",columnDefinition = "VARCHAR(28)")
     private String phone;
     private String address;
+    @Column(name = "employe_image",columnDefinition = "TEXT")
+    private String employeeImage;
     @ManyToOne
     @JoinColumn(name = "employee_account_id",referencedColumnName = "account_id")
     private Account account;

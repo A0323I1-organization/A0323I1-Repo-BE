@@ -21,7 +21,7 @@ public class TypeSeat {
     @Column(name = "type_seat_name")
     private String typeSeatName;
     @Column(name = "type_seat_price")
-    private String typeSeatPrice;
+    private double typeSeatPrice;
 
     @OneToMany(mappedBy = "typeSeat")
     private List<Seat> seats;

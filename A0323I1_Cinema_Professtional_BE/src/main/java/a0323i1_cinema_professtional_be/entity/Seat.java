@@ -24,8 +24,9 @@ public class Seat {
     @JoinColumn(name = "type_seat_id",referencedColumnName = "type_seat_id")
     private TypeSeat typeSeat;
     @ManyToOne
-    @JoinColumn(name = "room_id",referencedColumnName = "room_id")
-    private Room room;
+    @JoinColumn(name = "calendar_show_id",referencedColumnName = "calendar_show_id")
+    private CalendarShow calendarShow;
+
     @OneToMany(mappedBy = "seat")
     private List<Ticket> ticketList;
 }
