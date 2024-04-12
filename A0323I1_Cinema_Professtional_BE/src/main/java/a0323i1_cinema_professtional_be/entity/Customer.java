@@ -30,6 +30,8 @@ public class Customer {
     private String email;
     @Column(name = "phone",columnDefinition = "VARCHAR(28)")
     private String phone;
+    @Column(name = "customer_image",columnDefinition = "TEXT")
+    private String customerImage;
     private String address;
     private int point;
     @ManyToOne
