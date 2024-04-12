@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.transaction.Transactional;
 
+
 @Repository
 @Transactional
 public interface MovieRepository extends JpaRepository<Movie, Integer> {
@@ -18,6 +19,19 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
 
     //Xóa
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.List;
+
+@Repository
+@Transactional
+public interface MovieRepository extends JpaRepository<Movie,Integer> {
+    @Modifying
+    @Query(value = "insert INTO movie (movie_name, movie_start_day, movie_end_day, movie_actor, movie_manufacturer, movie_director, movie_duration, movie_trailer, movie_image, movie_detail, movie_version) VALUES(?,?,?,?,?,?,?,?,?,?,?)",nativeQuery = true)
+    void saveMovie(String movieName, Date movieStartDay, Date movieEndDay, String movieActor, String movieManufacturer, String movieDirector, int movieDuration, String movieTrailer, String movieImage, String movieDetail, boolean movieVersion);
+    @Modifying
+    @Query(nativeQuery = true, value = "")
+    void updateMovieById(String movieName, Date movieStartDay, Date movieEndDay, String movieActor, String movieManufacturer, String movieDirector, int movieDuration, String movieTrailer, String movieImage, String movieDetail, boolean movieVersion, int movie_id);
     @Modifying
     @Query(value = "DELETE FROM calendar_show where calender_show_id = :calender_show_id", nativeQuery = true)
     void deleteMovie(@Param("calender_show_id") int id);

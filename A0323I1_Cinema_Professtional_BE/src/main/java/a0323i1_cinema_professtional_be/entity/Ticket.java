@@ -17,9 +17,7 @@ public class Ticket {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ticket_id")
     private int ticketId;
-    @ManyToOne
-    @JoinColumn(name = "calendar_show_id",referencedColumnName = "calendar_show_id")
-    private CalendarShow calendarShow;
+
     @ManyToOne
     @JoinColumn(name = "invoice_id",referencedColumnName = "invoice_id")
     private Invoice invoice;
