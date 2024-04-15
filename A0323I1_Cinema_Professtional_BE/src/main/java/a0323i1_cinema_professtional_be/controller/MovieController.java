@@ -28,7 +28,7 @@ public class MovieController {
         return new ResponseEntity<>(movies, HttpStatus.OK);
     }
 
-    @GetMapping("")
+    @GetMapping("/list")
     public ResponseEntity<List<MovieProjection>> getAll() {
         List<MovieProjection> movieList = movieService.findAllMovieProjection();
         if(movieList.isEmpty()) {
@@ -38,9 +38,9 @@ public class MovieController {
         }
     }
 
-    @GetMapping("/search/{movieName}")
-    public ResponseEntity<List<MovieProjection>> getAllMovieByMovieName(@PathVariable String movieName) {
-        List<MovieProjection> movieList = movieService.findMovieByMovieName(movieName);
+    @GetMapping("/search")
+    public ResponseEntity<List<MovieProjection>> getAllMovieByMovieName(@RequestParam(required = false,defaultValue = "") String name) {
+        List<MovieProjection> movieList = movieService.findMovieByMovieName(name);
         if(movieList.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
