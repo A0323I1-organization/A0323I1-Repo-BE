@@ -13,14 +13,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@Controller
+@RestController
 @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "**")
 @RequestMapping("/api/movie")
 public class MovieController {
     @Autowired
     private MovieService movieService ;
 
-    @GetMapping()
+    @GetMapping("/list")
     public ResponseEntity<?> getAllMovie(@RequestParam(defaultValue = "") String find,
                                             @RequestParam(value = "page", defaultValue = "0") Integer page,
                                             @RequestParam(value = "size", defaultValue = "3") Integer size) {

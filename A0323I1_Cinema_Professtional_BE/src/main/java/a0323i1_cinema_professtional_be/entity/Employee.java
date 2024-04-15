@@ -1,6 +1,7 @@
 package a0323i1_cinema_professtional_be.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -35,6 +36,7 @@ public class Employee {
     private String employeeImage;
     @ManyToOne
     @JoinColumn(name = "employee_account_id",referencedColumnName = "account_id")
+    @JsonBackReference
     private Account account;
 
     @OneToMany(mappedBy = "employee")

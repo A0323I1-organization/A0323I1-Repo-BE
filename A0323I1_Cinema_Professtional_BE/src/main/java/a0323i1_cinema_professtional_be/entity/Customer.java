@@ -35,8 +35,7 @@ public class Customer {
     private String address;
     private int point;
 
-    @Column(name = "customer_image",columnDefinition = "TEXT")
-    private String customerImage;
+
     @ManyToOne
     @JoinColumn(name = "customer_account_id",referencedColumnName = "account_id")
     private Account account;
