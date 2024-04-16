@@ -11,31 +11,9 @@ import java.util.List;
 
 public interface CalendarShowDTO {
 
-    String getMovieName();
-
-    Integer getMovieId();
-
-    Date getMovieStartDay();
-
-    String getMovieActor();
-
-    String getMovieManufacturer();
-
-    String getMovieDirector();
-
-    Integer getMovieDuration();
-
-    String getMovieTrailer();
-
-    String getMovieImage();
-
-    String getMovieDetail();
-
     Integer getShowTimeId();
-
-    Date getShowDate();
-
-    Time getMovieTime();
+    Integer getCalendarShowId();
+    Integer getMovieId();
 
 }
 

@@ -16,7 +16,9 @@ import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 
-
+/**
+ * @author LongNHB
+ */
 @Service
 public class SendEmailService {
 
@@ -27,6 +29,15 @@ public class SendEmailService {
         this.mailSender = mailSender;
     }
 
+    /**
+     * this method use to send email for customer with QR
+     * @param to  customer email address
+     * @param subject
+     * @param body
+     * @param qrData data
+     * @param qrWidth width qr
+     * @param qrHeight height qr
+     */
     public void sendEmailWithQRCode(String to, String subject, String body, String qrData, int qrWidth, int qrHeight) {
         try {
 
@@ -57,6 +68,15 @@ public class SendEmailService {
         }
     }
 
+    /**
+     * this method use to generate image QR
+     * @param data
+     * @param width
+     * @param height
+     * @return image QR
+     * @throws WriterException
+     * @throws IOException
+     */
     private BufferedImage generateQrCodeImage(String data, int width, int height) throws WriterException, IOException {
         QRCodeWriter writer = new QRCodeWriter();
         BitMatrix bitMatrix = writer.encode(data, BarcodeFormat.QR_CODE, width, height);

@@ -28,7 +28,7 @@ public class Movie {
     @Column(name = "movie_start_day", columnDefinition = "DATE")
     private Date movieStartDay;
 
-    @Column(name = "movie_end_day",columnDefinition = "DATE")
+    @Column(name = "movie_end_day", columnDefinition = "DATE")
     private Date movieEndDay;
 
     @Column(name = "movie_actor")
@@ -49,7 +49,7 @@ public class Movie {
     @Column(name = "movie_image", columnDefinition = "TEXT")
     private String movieImage;
 
-    @Column(name = "movie_detail",columnDefinition = "TEXT")
+    @Column(name = "movie_detail", columnDefinition = "TEXT")
     private String movieDetail;
 
     @Column(name = "movie_version")
@@ -60,9 +60,9 @@ public class Movie {
     private List<CalendarShow> calendarShows;
 
 
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinTable(name = "employe_movie",joinColumns = @JoinColumn(name = "movie_id",referencedColumnName = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "employee_id",referencedColumnName = "employee_id"))
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(name = "employe_movie", joinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "movie_id"),
+            inverseJoinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "employee_id"))
     private List<Employee> employees;
 
 

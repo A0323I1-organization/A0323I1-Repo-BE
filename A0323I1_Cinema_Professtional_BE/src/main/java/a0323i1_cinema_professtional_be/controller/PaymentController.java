@@ -21,7 +21,11 @@ import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * @author LongNHB
+ */
 @RestController
+@RequestMapping("/api/")
 public class PaymentController {
     @Autowired
     private InvoiceService invoiceService;
@@ -31,15 +35,19 @@ public class PaymentController {
     @Autowired
     private SendEmailService sendEmailService;
 
-    @GetMapping("/pay")
-    public ResponseEntity<PaymentDTO> getPay() throws UnsupportedEncodingException {
+    /**
+     * @param amount: total money need to pay
+     * @return link to page VNPAY
+     */
+
+    @GetMapping("/pay/{amount}")
+    public ResponseEntity<PaymentDTO> getPay(@PathVariable("amount") Long amount) throws UnsupportedEncodingException {
 
         String vnp_Version = "2.1.0";
         String vnp_Command = "pay";
         String orderType = "other";
-        long amount = 10000 * 100;
         String bankCode = "NCB";
-
+        amount = amount * 100;
         String vnp_TxnRef = ConfigVNPAY.getRandomNumber(8);
         String vnp_IpAddr = "127.0.0.1";
 
@@ -105,12 +113,17 @@ public class PaymentController {
         return ResponseEntity.status(HttpStatus.OK).body(paymentDTO);
     }
 
+    /**
+     * this method uses to create invoice, ticket, set seat status is true and send invoice id to customer by email
+     * @param date: date payment
+     * @param responseCode: if payment success responseCode = 00
+     * @param seatIdsString: list seat id
+     * @param customerId
+     * @return detail information ticket
+     */
     @GetMapping("/payment-infor")
     public ResponseEntity<List<TicketDetail>> transaction(
             @RequestParam(value = "vnp_PayDate") String date,
-            @RequestParam(value = "vnp_Amount") String amount,
-            @RequestParam(value = "vnp_OrderInfo") String order,
-            @RequestParam(value = "vnp_BankCode") String bankCode,
             @RequestParam(value = "vnp_ResponseCode") String responseCode,
             @CookieValue(value = "listSeat") String seatIdsString,
             @CookieValue(value = "customerId") int customerId) {

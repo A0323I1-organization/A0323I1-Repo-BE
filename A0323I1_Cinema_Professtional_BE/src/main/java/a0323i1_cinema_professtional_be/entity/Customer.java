@@ -19,18 +19,26 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "customer_id")
     private int customerId;
+
     @Column(name = "fullname",columnDefinition = "VARCHAR(28)")
     private String fullname;
+
     @Column(name = "birthday",columnDefinition = "DATE")
     private Date birthday;
+
     private boolean gender;
+
     @Column(name = "id_card",columnDefinition = "VARCHAR(28)")
     private String idCard;
+
     @Column(name = "email",columnDefinition = "VARCHAR(250)")
     private String email;
+
     @Column(name = "phone",columnDefinition = "VARCHAR(28)")
     private String phone;
+
     private String address;
+
     @ManyToOne
     @JoinColumn(name = "customer_account_id",referencedColumnName = "account_id")
     private Account account;
