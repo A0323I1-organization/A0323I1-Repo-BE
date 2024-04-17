@@ -42,7 +42,6 @@ public class Customer {
 
     @Column(name = "customer_image",columnDefinition = "TEXT")
     private String customerImage;
-    private String address;
     private int point;
 
 

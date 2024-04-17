@@ -37,7 +37,6 @@ public class CalendarShow {
     private Room room;
 
 
-
     @OneToMany(mappedBy = "calendarShow")
     private List<Seat> seats;
 

@@ -54,6 +54,7 @@ public class Movie {
 
     @Column(name = "movie_version")
     private boolean movieVersion;
+
     private boolean status;
 
 
@@ -65,11 +66,6 @@ public class Movie {
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(name = "employe_movie", joinColumns = @JoinColumn(name = "movie_id", referencedColumnName = "movie_id"),
             inverseJoinColumns = @JoinColumn(name = "employee_id", referencedColumnName = "employee_id"))
-
-    @ManyToMany(fetch = FetchType.EAGER,cascade = CascadeType.ALL)
-    @JoinTable(name = "employee_movie",joinColumns = @JoinColumn(name = "movie_id",referencedColumnName = "movie_id"),
-            inverseJoinColumns = @JoinColumn(name = "employee_id",referencedColumnName = "employee_id"))
-
     private List<Employee> employees;
 
 
