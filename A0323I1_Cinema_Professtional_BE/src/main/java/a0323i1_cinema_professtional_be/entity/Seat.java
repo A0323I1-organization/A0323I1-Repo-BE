@@ -45,4 +45,5 @@ public class Seat {
     public void setCheckSeat(boolean checkSeat) {
         this.checkSeat = checkSeat;
     }
+
 }
