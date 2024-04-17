@@ -20,6 +20,8 @@ public class Employee {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
     private int employeeId;
+    @Column(name = "employee_iden")
+    private String employeeIden;
     @Column(name = "birth_day",columnDefinition = "DATE")
     private Date birthday;
     private boolean gender;

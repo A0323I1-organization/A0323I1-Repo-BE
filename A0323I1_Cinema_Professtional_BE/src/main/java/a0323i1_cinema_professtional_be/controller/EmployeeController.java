@@ -26,12 +26,13 @@ public class EmployeeController {
 
     @GetMapping("")
     public ResponseEntity<Page<Employee>> findAll(@PageableDefault(page = 0, size = 5) Pageable pageable,
-                                                  @RequestParam(name = "fullname", defaultValue = "") String fullname,
-                                                  @RequestParam(name = "phone", defaultValue = "") String phone, @RequestParam(defaultValue = "employeeId") String sort
+                                                  @RequestParam(required = false, defaultValue = "") String fullname,
+                                                  @RequestParam(required = false, defaultValue = "") String phone, @RequestParam(defaultValue = "employeeId") String sort
     ) {
         Sort sort1 = Sort.by(Sort.Direction.ASC, sort);
         Pageable pageableWithSort = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort1);
         Page<Employee> list = employeeService.findAll("%" + fullname + "%", "%" + phone + "%", pageableWithSort);
+        System.out.println(list);
         return new ResponseEntity<Page<Employee>>(list, HttpStatus.OK);
     }
 
