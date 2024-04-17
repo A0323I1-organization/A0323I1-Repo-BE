@@ -27,8 +27,6 @@ public class Employee {
     private String image;
 
 
-    private int employeeId;
-
     @Column(name = "birth_day",columnDefinition = "DATE")
     private Date birthday;
 
