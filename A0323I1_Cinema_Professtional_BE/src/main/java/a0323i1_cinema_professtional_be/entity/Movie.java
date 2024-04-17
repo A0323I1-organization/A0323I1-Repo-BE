@@ -41,6 +41,8 @@ public class Movie {
     private String movieDetail;
     @Column(name = "movie_version")
     private boolean movieVersion;
+    @Column(name="status")
+    private int status;
 
     @OneToMany(mappedBy = "movie")
     private List<CalendarShow> calendarShows;

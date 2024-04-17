@@ -19,7 +19,7 @@ public class Invoice {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "invoice_id")
     private int invoiceId;
-    @Column(name = "data_payment",columnDefinition = "DATE")
+    @Column(name = "date_payment",columnDefinition = "DATE")
     private Date datePayment;
     @ManyToOne
     @JoinColumn(name = "customer_id",referencedColumnName = "customer_id")
