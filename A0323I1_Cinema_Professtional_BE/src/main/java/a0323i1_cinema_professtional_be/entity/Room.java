@@ -1,8 +1,6 @@
 package a0323i1_cinema_professtional_be.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -20,20 +18,16 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "room_id")
     private int roomId;
-
     @Column(name = "room_name")
     private String roomName;
-
     @Column(name = "room_payload")
     private int roomPayload;
-
     @Column(name = "room_detail")
     private String roomDetail;
 
+    @OneToMany(mappedBy = "room")
+    private List<Seat> seats;
 
     @OneToMany(mappedBy = "room")
     private List<CalendarShow> calendarShows;
-
-
-
 }
