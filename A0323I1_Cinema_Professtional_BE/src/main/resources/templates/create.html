@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Thêm mới</title>
+    <link rel="stylesheet" href="" th:href="@{/style.css}" />
+
+    <script type="text/javascript">
+        function ImageFileAsURL(){
+            var fileSelected = document.getElementById('upload').files;
+            if(fileSelected.length > 0){
+                var fileToLoad = fileSelected [0];
+                // Kiểm tra kích thước tệp hình ảnh (ví dụ: không lớn hơn 5MB)
+                if (fileToLoad.size > 5 * 1024 * 1024) {
+                    alert("Kích thước tệp hình ảnh quá lớn. Vui lòng chọn một tệp nhỏ hơn 5MB.");
+                    return;
+                }
+                var fileReader = new FileReader();
+                fileReader.onload = function(fileLoaderEvent){
+                    var srcData = fileLoaderEvent.target.result;
+                    var newImage =document.createElement('img');
+                    newImage.src = srcData;
+                    newImage.style.width = "100%";
+                    newImage.style.height = "auto";
+                    document.getElementById('displayImg').innerHTML = newImage.outerHTML;
+                }
+                fileReader.readAsDataURL(fileToLoad);
+            }
+        }
+    </script>
+</head>
+<body>
+<section class="container">
+    <header><b>Thêm mới nhân viên</b></header>
+        <form th:action="@{create}" th:object="${employee}" class="form" method="post">
+            <div class="input-box">
+                <label for="upload">Hình ảnh</label>
+                <input type="file" name="upload" id="upload" onchange="ImageFileAsURL()" th:field="*{employeeImage}"/>
+            </div>
+            <div id="displayImg" >
+            </div>
+
+            <div class="input-box">
+                <label for="fullname">Họ Tên</label>
+                <input type="text" id="fullname" th:field="*{fullname}"/>
+            </div>
+            <div class="input-box">
+                <label for="birthday">Ngày sinh</label>
+                <input type="date" id="birthday" th:field="*{birthday}" />
+            </div>
+            <div class="input-box">
+                <label for="user">Tài khoản</label>
+                <input type="text" id="user" th:field="*{account.username}"/>
+            </div>
+            <div class="input-box">
+                <label for="password">Mật khẩu</label>
+                <input type="password" id="password" th:field="*{account.password}"/>
+            </div>
+            <div class="input-box">
+                <label for="confirmPassword">Nhập lại mật khẩu</label>
+                <input type="password" id="confirmPassword" />
+            </div>
+            <div class="gender-box">
+                <lable>Giới tính</lable>
+                <div class="gender-option">
+                    <div class="gender">
+                        <input type="radio" name="gender" id="check-male" value="1" th:field="*{gender}" />
+                        <label for="check-male">Nam</label>
+                    </div>
+                    <div class="gender">
+                        <input type="radio" name="gender" id="check-fermale" value="0" th:field="*{gender}"  />
+                        <label for="check-fermale">Nữ</label>
+                    </div>
+                </div>
+            </div>
+            <div class="input-box">
+                <label for="email">Email</label>
+                <input type="text" id="email" th:field="*{email}"/>
+            </div>
+            <div class="input-box">
+                <label for="idCard">CMND</label>
+                <input type="text" id="idCard" th:field="*{idCard}" />
+            </div>
+            <div class="input-box">
+                <label for="numberPhone">Số điện thoại</label>
+                <input type="text" id="numberPhone" th:field="*{phone}" />
+            </div>
+            <div class="input-box">
+                <label for="address">Địa chỉ</label>
+                <textarea id="address" th:field="*{address}"></textarea>
+            </div>
+            <button type="submit">Thêm mới</button>
+            <button type="reset">Quay lại</button>
+    </form>
+</section>
+</body>
+</html>

@@ -33,4 +33,7 @@ public class Account {
     private List<Employee> employeeList;
     @OneToMany(mappedBy = "account")
     private List<Customer> customerList;
+
+    public Account(String username, String password) {
+    }
 }

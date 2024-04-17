@@ -15,12 +15,4 @@ import java.util.List;
 @Repository
 @Transactional
 public interface MovieRepository extends JpaRepository<Movie,Integer> {
-    void saveMovie();
-    @Modifying
-    void deleteMovieById(int id);
-    @Query(value = "select * from movie where movie_id = :id ", nativeQuery = true)
-    Movie getMovieById(@Param("id") int id);
-    @Query(value = "select * from movie", nativeQuery = true)
-    List<Movie> findAllMovie();
-    Page<Movie> findAllMovie(Pageable pageable);
 }
