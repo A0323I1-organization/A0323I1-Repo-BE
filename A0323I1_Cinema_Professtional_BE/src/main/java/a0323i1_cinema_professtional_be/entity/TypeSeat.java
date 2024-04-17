@@ -23,10 +23,6 @@ public class TypeSeat {
     @Column(name = "name")
     private String typeSeatName;
 
-
-    @Column(name = "price")
-    private String typeSeatPrice;
-
     @Column(name = "type_seat_price")
     private double typeSeatPrice;
 

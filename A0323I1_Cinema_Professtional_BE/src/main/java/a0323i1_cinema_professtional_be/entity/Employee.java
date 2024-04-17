@@ -47,8 +47,10 @@ public class Employee {
     private String phone;
 
     private String address;
+
     @Column(name = "employe_image",columnDefinition = "TEXT")
     private String employeeImage;
+
     @ManyToOne
     @JoinColumn(name = "employee_account_id",referencedColumnName = "account_id")
     @JsonBackReference
