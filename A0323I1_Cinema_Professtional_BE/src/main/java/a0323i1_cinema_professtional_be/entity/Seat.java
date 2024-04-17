@@ -32,6 +32,8 @@ public class Seat {
 
     @ManyToOne
     @JoinColumn(name = "calendar_show_id", referencedColumnName = "calendar_show_id")
+    @JoinColumn(name = "calendar_show_id",referencedColumnName = "calendar_show_id")
+
     private CalendarShow calendarShow;
 
     @OneToMany(mappedBy = "seat")

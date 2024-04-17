@@ -37,6 +37,7 @@ public class CalendarShow {
     private Room room;
 
 
+
     @OneToMany(mappedBy = "calendarShow")
     private List<Seat> seats;
 
@@ -45,5 +46,9 @@ public class CalendarShow {
     @JoinColumn(name = "show_time_id",referencedColumnName = "show_time_id")
     private ShowTime showTime;
 
+
+
+    @OneToMany(mappedBy = "calendarShow")
+    private List<Seat> ticketList;
 
 }
