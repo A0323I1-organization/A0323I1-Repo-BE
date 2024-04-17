@@ -15,14 +15,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
+
     @GetMapping("create")
-    public String showCreate(Model model){
-        model.addAttribute("employee",new Employee());
+    public String showCreate(Model model) {
+        model.addAttribute("employee", new Employee());
         return "/create";
     }
+
     @PostMapping("create")
-    public String doCreate(@ModelAttribute("employee") Employee employee){
-        employeeService.create(employee.getAddress(),employee.getBirthday(),employee.getEmail(),employee.getFullname(),employee.isGender(),employee.getIdCard(),employee.getEmployeeImage(),employee.getPhone(),employee.getAccount().getAccountId(),employee.getAccount().getUsername(),employee.getAccount().getPassword());
+    public String doCreate(@ModelAttribute("employee") Employee employee) {
+        employeeService.create(employee.getAddress(), employee.getBirthday(), employee.getEmail(),
+                employee.getFullname(), employee.isGender(), employee.getIdCard(), employee.getEmployeeImage(),
+                employee.getPhone(), employee.getAccount().getAccountId(), employee.getAccount().getUsername(), employee.getAccount().getPassword());
         return "/list";
     }
 }
