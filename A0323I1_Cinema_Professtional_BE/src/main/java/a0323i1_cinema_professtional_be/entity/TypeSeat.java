@@ -1,7 +1,6 @@
 package a0323i1_cinema_professtional_be.entity;
 
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,13 +18,10 @@ public class TypeSeat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "type_seat_id")
     private int typeSeatId;
-
-    @Column(name = "name")
+    @Column(name = "type_seat_name")
     private String typeSeatName;
-
     @Column(name = "type_seat_price")
-    private double typeSeatPrice;
-
+    private String typeSeatPrice;
 
     @OneToMany(mappedBy = "typeSeat")
     private List<Seat> seats;
