@@ -15,4 +15,11 @@ import java.util.List;
 @Repository
 @Transactional
 public interface MovieRepository extends JpaRepository<Movie,Integer> {
+    @Query(value = "select * from movie m " +
+            "join calendar_show c on c.movie_id = m.movie_id " +
+            "join employe_movie e on e.movie_id = m.movie_id " +
+            "join employee epl on epl.employee_id = e.employee_id " +
+            "join movie_type_detail t on t.movie_id = m.movie_id " +
+            "join movie_type mt on mt.movie_type_id = t.movie_type_id", nativeQuery = true)
+    List<Movie> findAllMovie();
 }

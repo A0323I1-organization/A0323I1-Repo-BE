@@ -11,10 +11,4 @@ import org.springframework.stereotype.Repository;
 import java.util.Date;
 @Repository
 public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
-
-    @Modifying
-    @Query(value = "INSERT INTO employee (`address`, `birth_day`, `email`, `fullname`, `gender`, `id_card`, `image`, `phone`,`account`)   " +
-            "VALUES (:address, :birthday, :email, :fullname, :gender, :idCard, :image, :phone,:account);",nativeQuery = true)
-    void create(@Param("address") String address, @Param("birthday") Date birthday, @Param("email")String email, @Param("fullname") String fullname,
-                @Param("gender") boolean gender, @Param("idCard")String idCard, @Param("image")String image, @Param("phone")String phone,@Param("account") Account account);
 }
