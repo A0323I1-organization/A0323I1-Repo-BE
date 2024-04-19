@@ -1,6 +1,7 @@
 package a0323i1_cinema_professtional_be.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,10 +25,12 @@ public class Account {
     private String password;
 
     private String email;
+    @Column(columnDefinition = "tinyint default 1")
     private boolean status;
 
     @ManyToOne
     @JoinColumn(name = "role_id",referencedColumnName = "role_id")
+    @JsonBackReference
     private Role role;
     @OneToMany(mappedBy = "account")
     private List<Employee> employeeList;
