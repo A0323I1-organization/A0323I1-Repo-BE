@@ -27,7 +27,7 @@ public class  LoggerEmployee {
     public void loggingException(JoinPoint joinPoint) {
         System.out.println("------------------------------------------------------------------");
         Object[] args = joinPoint.getArgs();
-        int id  = (Integer) args[0];
+        String id  = (String) args[0];
         System.out.println("Delete employee with id : " + id);
         System.out.println("----------------------------------------------------------");
     }
