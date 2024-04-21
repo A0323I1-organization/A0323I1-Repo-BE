@@ -1,6 +1,7 @@
 package a0323i1_cinema_professtional_be.entity;
 
 
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,9 +20,10 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
+    private int employeeId;
 
-
-    private int EmployeeId;
+    @Column(name = "employee_iden",columnDefinition = "TEXT")
+    private String employeeIden;
 
     @Column(name = "image",columnDefinition = "TEXT")
     private String image;
@@ -48,8 +50,6 @@ public class Employee {
 
     @Column(name = "employe_image",columnDefinition = "TEXT")
     private String employeeImage;
-    @Column(name = "employe_iden",columnDefinition = "TEXT")
-    private String iden;
     @ManyToOne
     @JoinColumn(name = "employee_account_id",referencedColumnName = "account_id")
     @JsonBackReference
