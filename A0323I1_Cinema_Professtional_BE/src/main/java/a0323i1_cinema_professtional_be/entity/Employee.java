@@ -21,7 +21,7 @@ public class Employee {
     @Column(name = "employee_id")
     private int employeeId;
 
-    @Column(name = "employee_iden")
+    @Column(name = "employee_iden",columnDefinition = "TEXT")
     private String employeeIden;
 
     @Column(name = "image",columnDefinition = "TEXT")
@@ -49,7 +49,6 @@ public class Employee {
 
     @Column(name = "employe_image",columnDefinition = "TEXT")
     private String employeeImage;
-
     @ManyToOne
     @JoinColumn(name = "employee_account_id",referencedColumnName = "account_id")
     @JsonBackReference
