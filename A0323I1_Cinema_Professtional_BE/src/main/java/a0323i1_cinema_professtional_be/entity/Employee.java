@@ -1,6 +1,7 @@
 package a0323i1_cinema_professtional_be.entity;
 
 
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;

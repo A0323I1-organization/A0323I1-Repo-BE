@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 @EnableAspectJAutoProxy
 
-public class git LoggerEmployee {
+public class  LoggerEmployee {
     static int count =0;
     @Before("execution(* a0323i1_cinema_professtional_be.controller.EmployeeController.findAll(..))")
     public void countRequest(){
@@ -27,7 +27,7 @@ public class git LoggerEmployee {
     public void loggingException(JoinPoint joinPoint) {
         System.out.println("------------------------------------------------------------------");
         Object[] args = joinPoint.getArgs();
-        int id  = (Integer) args[0];
+        String id  = (String) args[0];
         System.out.println("Delete employee with id : " + id);
         System.out.println("----------------------------------------------------------");
     }
