@@ -42,7 +42,7 @@ public class Employee {
     @OneToMany(mappedBy = "employee")
     private List<Invoice> invoiceList;
     @Column(name = "employee_iden")
-    private String employeeIden;
+    private String iden;
 
 
 }
