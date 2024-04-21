@@ -19,7 +19,7 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
-    private int employeeId;
+    private int EmployeeId;
     @Column(name = "employee_iden")
     private String employeeIden;
     @Column(name = "birth_day",columnDefinition = "DATE")
