@@ -29,8 +29,7 @@ public class EmployeeController {
     public ResponseEntity<Page<Employee>> findAll(@PageableDefault(page = 0, size = 5) Pageable pageable,
                                                   @RequestParam(required = false, defaultValue = "") String fullname,
                                                   @RequestParam(required = false, defaultValue = "") String phone,
-                                                  @RequestParam(required=false,defaultValue = "employeeId") String sort
-    ) {
+                                                  @RequestParam(required=false,defaultValue = "employeeId") String sort) {
         Sort sort1 = Sort.by(Sort.Direction.ASC, sort);
         Pageable pageableWithSort = PageRequest.of(pageable.getPageNumber(), pageable.getPageSize(), sort1);
         Page<Employee> list = employeeService.findAll("%" + fullname + "%", "%" + phone + "%", pageableWithSort);
