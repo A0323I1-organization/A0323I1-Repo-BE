@@ -20,6 +20,6 @@ public class EmployeeController {
     }
     @PutMapping("/{id}")
     public ResponseEntity<?> updateEmployee(@PathVariable int id,@RequestBody Employee employee){
-        
+
     }
 }
