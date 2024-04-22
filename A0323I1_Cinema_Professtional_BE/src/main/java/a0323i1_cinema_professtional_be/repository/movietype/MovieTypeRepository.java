@@ -9,4 +9,10 @@ import java.util.List;
 @Repository
 @Transactional
 public interface MovieTypeRepository extends JpaRepository<MovieType,Integer> {
+
+
+//    List<MovieType> findAllMovieType();
+//    MovieType findAllMovieTypeById(int id);
+//    MovieType findAllMovieTypeByName(String name);
+
 }

@@ -6,4 +6,10 @@ import java.util.List;
 
 public interface MovieTypeService {
 
+
+=======
+//    List<MovieType> findAllMovieType();
+//    MovieType findAllMovieTypeById(int id);
+//    MovieType findAllMovieTypeByName(String name);
+
 }
