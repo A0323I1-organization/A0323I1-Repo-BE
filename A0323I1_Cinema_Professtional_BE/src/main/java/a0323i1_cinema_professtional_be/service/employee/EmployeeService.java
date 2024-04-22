@@ -8,4 +8,5 @@ import java.util.Date;
 public interface EmployeeService {
     void create(Employee employee);
     void update(Employee employee);
+    Employee findById(int id);
 }

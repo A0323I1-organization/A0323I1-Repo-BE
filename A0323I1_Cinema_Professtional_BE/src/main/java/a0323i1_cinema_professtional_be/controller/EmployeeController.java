@@ -14,8 +14,12 @@ public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
     @PostMapping
-    public ResponseEntity<?> create(@RequestBody Employee employee){
+    public ResponseEntity<?> createEmployee(@RequestBody Employee employee){
         employeeService.create(employee);
         return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateEmployee(@PathVariable int id,@RequestBody Employee employee){
+        
     }
 }
