@@ -2,6 +2,7 @@ package a0323i1_cinema_professtional_be.controller;
 
 
 
+
 import a0323i1_cinema_professtional_be.dto.movie.AllMovieDTO;
 import a0323i1_cinema_professtional_be.dto.movie.GetMovieDTO;
 import a0323i1_cinema_professtional_be.entity.Movie;
@@ -70,6 +71,7 @@ public class MovieController {
 @RestController
 @CrossOrigin(origins = "http://localhost:3000", allowedHeaders = "**")
 @RequestMapping("/api/movie")
+
 public class MovieController {
     @Autowired
     private MovieService movieService ;
@@ -100,6 +102,10 @@ public class MovieController {
         } else {
             return new ResponseEntity<>(movieList,HttpStatus.OK);
 
+
+
+
         }
     }
+
 }

@@ -1,6 +1,6 @@
-package a0323i1_cinema_professtional_be.controller;
 
-import a0323i1_cinema_professtional_be.entity.Employee;
+
+
 import a0323i1_cinema_professtional_be.exception.ApiResponse;
 import a0323i1_cinema_professtional_be.service.employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -43,6 +43,22 @@ public class EmployeeController {
             employeeService.deleteEmployee(id);
             return new ResponseEntity<>(new ApiResponse("Employee with ID " + id + " has been deleted successfully.", true), HttpStatus.OK);
         }
+      @Autowired
+    private EmployeeService employeeService;
+    @PostMapping
+    public ResponseEntity<?> createEmployee(@RequestBody Employee employee){
+        employeeService.create(employee);
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    @PutMapping("/{id}")
+    public ResponseEntity<?> updateEmployee(@PathVariable int id,@RequestBody Employee employee){
+
+        if(employee == null) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }
+        employeeService.update(employee);
+        return new ResponseEntity<>("Update Success",HttpStatus.OK);
+
     }
 }
 

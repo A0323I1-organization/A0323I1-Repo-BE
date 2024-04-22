@@ -1,6 +1,3 @@
-package a0323i1_cinema_professtional_be.service.employee;
-
-import a0323i1_cinema_professtional_be.entity.Employee;
 import a0323i1_cinema_professtional_be.exception.ResourceNotFoundException;
 import a0323i1_cinema_professtional_be.repository.employee.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,5 +28,20 @@ public class EmployeeServiceImpl implements EmployeeService {
            }else{
                employeeRepository.deleteEmployeeById(id);
            }
+    }
+  @Transactional
+    @Override
+    public void create(Employee employee) {
+     employeeRepository.save(employee);
+    }
+
+    @Override
+    public void update(Employee employee) {
+        employeeRepository.save(employee);
+    }
+
+    @Override
+    public Employee findById(int id) {
+        return employeeRepository.findById(id).orElse(null );
     }
 }
