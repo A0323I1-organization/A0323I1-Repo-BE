@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 @Component
 @EnableAspectJAutoProxy
 
-public class git LoggerEmployee {
+public class  LoggerEmployee {
     static int count =0;
     @Before("execution(* a0323i1_cinema_professtional_be.controller.EmployeeController.findAll(..))")
     public void countRequest(){

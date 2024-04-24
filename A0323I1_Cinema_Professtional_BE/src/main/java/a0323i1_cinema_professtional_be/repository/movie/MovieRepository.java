@@ -1,14 +1,36 @@
 
 
-import javax.transaction.Transactional;
 
-import java.time.LocalDate;
+import a0323i1_cinema_professtional_be.dto.movie.AllMovieDTO;
+import a0323i1_cinema_professtional_be.dto.movie.GetMovieDTO;
+
+import a0323i1_cinema_professtional_be.dto.ticket.MovieProjection;
+
+import a0323i1_cinema_professtional_be.entity.Movie;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+
 import java.util.Date;
 import java.util.List;
 
+public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
-@Transactional
-public interface MovieRepository extends JpaRepository<Movie,Integer> {
+
+    @Query(value = "select  m.movieName as movieName, m.movieId as movieId, m.movieActor as movieActor" +
+            ",m.movieDetail as movieDetail, m.movieDuration as movieDuration, m.movieStartDay as movieStartDay" +
+            ",m.movieManufacturer as movieManufacturer, m.movieDirector as movieDirector, m.movieTrailer as movieTrailer," +
+            "m.movieImage as movieImage, m.movieVersion as movieVersion from Movie as m where m.movieId= :id")
+    GetMovieDTO getMovieById(@Param("id") int id);
+
+    @Query(value = "select m.movieId as movieId, m.movieImage as movieImage, m.movieName as movieName from Movie as m " +
+            "where m.movieStartDay <= current_date() and m.movieEndDay >= current_date() ")
+    List<AllMovieDTO> findAllMovieIsShowing();
+
 
 
     @Modifying
@@ -23,22 +45,22 @@ public interface MovieRepository extends JpaRepository<Movie,Integer> {
 
 
     //Tìm kiếm
-    @Query(value = "select m.movie_id , m.movie_name ,m.start_day , m.studio , m.movie_duration from movie m " +
-            "join calendar_show c on c.movie_id = m.movie_id " +
-            "join employee e on m.employee_id = e.employee_id " +
-            "join movie_type_detail t on t.category_id = m.category_id  " +
-            "where  m.movie_id = ?;", nativeQuery = true)
-    Movie getMovieById(@Param("id") int id);
-
-
-    //List
-    @Query(value = "select m.movie_id, m.movie_name, m.movie_start_day, m.movie_duration from movie m " +
-            "join calendar_show c on c.movie_id = m.movie_id " +
-            "join employe_movie e on e.movie_id = m.movie_id " +
-            "join employee epl on epl.employee_id = e.employee_id "+
-            "join movie_type_detail t on t.movie_id = m.movie_id "+
-            "join movie_type mt on mt.movie_type_id = t.movie_type_id", nativeQuery = true)
-    Page<Movie> findAllMovie(Pageable pageable);
+//    @Query(value = "select m.movie_id , m.movie_name ,m.start_day , m.studio , m.movie_duration from movie m " +
+//            "join calendar_show c on c.movie_id = m.movie_id " +
+//            "join employee e on m.employee_id = e.employee_id " +
+//            "join movie_type_detail t on t.category_id = m.category_id  " +
+//            "where  m.movie_id = ?;", nativeQuery = true)
+//    Movie getMovieById(@Param("id") int id);
+//
+//
+//    //List
+//    @Query(value = "select m.movie_id, m.movie_name, m.movie_start_day, m.movie_duration from movie m " +
+//            "join calendar_show c on c.movie_id = m.movie_id " +
+//            "join employe_movie e on e.movie_id = m.movie_id " +
+//            "join employee epl on epl.employee_id = e.employee_id "+
+//            "join movie_type_detail t on t.movie_id = m.movie_id "+
+//            "join movie_type mt on mt.movie_type_id = t.movie_type_id", nativeQuery = true)
+//    Page<Movie> findAllMovie(Pageable pageable);
 
     @Query(value = "select m.movieId as movieId, m.movieName as movieName, m.movieImage as movieImage from Movie as m")
     List<MovieProjection> findAllMovieProjection();

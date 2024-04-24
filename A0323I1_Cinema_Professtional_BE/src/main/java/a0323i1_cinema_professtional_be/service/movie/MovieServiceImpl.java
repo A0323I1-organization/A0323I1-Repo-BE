@@ -2,8 +2,15 @@ package a0323i1_cinema_professtional_be.service.movie;
 
 
 
-@Service
-public class MovieServiceImpl implements MovieService{
+
+import a0323i1_cinema_professtional_be.dto.ticket.MovieProjection;
+import a0323i1_cinema_professtional_be.entity.Movie;
+import org.springframework.data.domain.Page;
+
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 
 
 /**
@@ -33,7 +40,7 @@ public class MovieServiceImpl implements MovieService{
     @Override
     public List<AllMovieDTO> findAllMovieIsShowing() {
         return movieRepository.findAllMovieIsShowing();
-
+    }
 
 //    @Override
 //    public void saveMovie(MovieDto movieDto) {
@@ -50,15 +57,15 @@ public class MovieServiceImpl implements MovieService{
         movieRepository.deleteMovie(id);
     }
 
-    @Override
-    public Page<Movie> findAllMovie(String find, Pageable pageable) {
-        return movieRepository.findAllMovie(pageable);
-    }
-
-    @Override
-    public Movie getMovieById(int id) {
-        return movieRepository.getMovieById(id);
-    }
+//    @Override
+//    public Page<Movie> findAllMovie(String find, Pageable pageable) {
+//        return movieRepository.findAllMovie(pageable);
+//    }
+//
+//    @Override
+//    public Movie getMovieById(int id) {
+//        return movieRepository.getMovieById(id);
+//    }
 
     @Override
     public List<MovieProjection> findAllMovieProjection() {
