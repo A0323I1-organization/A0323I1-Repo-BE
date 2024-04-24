@@ -1,6 +1,6 @@
 package a0323i1_cinema_professtional_be.utils;
 
-import a0323i1_cinema_professtional_be.dto.TicketProjection;
+import a0323i1_cinema_professtional_be.dto.ticket.TicketProjection;
 import com.itextpdf.io.font.PdfEncodings;
 import com.itextpdf.io.image.ImageData;
 import com.itextpdf.io.image.ImageDataFactory;
@@ -25,7 +25,8 @@ import com.itextpdf.layout.property.VerticalAlignment;
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
-import java.util.List;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ExportPDF {
 //    Chiều rộng: 419.53 điểm (148mm x 72 điểm/25.4mm)
@@ -82,7 +83,10 @@ public class ExportPDF {
 
             Table twoColTable2 = new Table(twoColWidth);
             Cell titleCell3 = getCellTitleText("Ngày(Date) :").setFont(vietnameseFont);
-            Cell valueCell3 = getValueCell(String.valueOf(ticket.getShowDate())).setFont(vietnameseFont);
+            Date showDate = ticket.getShowDate();
+            SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+            String formattedDate = dateFormat.format(showDate);
+            Cell valueCell3 = getValueCell(formattedDate).setFont(vietnameseFont);
 
             Cell titleCell4 = getCellTitleText("Phòng(Room) :").setFont(vietnameseFont);
             Cell valueCell4 = getValueCell(ticket.getRoomName()).setFont(vietnameseFont);
@@ -103,8 +107,9 @@ public class ExportPDF {
             fullColTable.addCell(new Cell().add(combinedParagraph5).setBorder(Border.NO_BORDER));
             document.add(fullColTable);
             Table twoColTable3 = new Table(twoColWidth);
-
-            twoColTable3.addCell(new Cell().add(ticket.getFullName()+ " "+ String.valueOf(ticket.getDatePayment())).setFont(vietnameseFont).setFontSize(10f).setBorder(Border.NO_BORDER));
+            Date datePayment = ticket.getDatePayment();
+            String formattedDatePayment = dateFormat.format(datePayment);
+            twoColTable3.addCell(new Cell().add(ticket.getFullName()+ " "+ formattedDatePayment).setFont(vietnameseFont).setFontSize(10f).setBorder(Border.NO_BORDER));
             twoColTable3.addCell(new Cell().add("www.cinema.com.vn").setFont(vietnameseFont).setFontSize(10f).setTextAlignment(TextAlignment.RIGHT).setBorder(Border.NO_BORDER));
 
             document.add(twoColTable3);
