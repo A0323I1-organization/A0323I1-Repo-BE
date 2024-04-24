@@ -6,7 +6,11 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 @Service
 public interface EmployeeService {
-    void create(Employee employee);
-    void update(Employee employee);
-    Employee findById(int id);
+    void create( String address,Date birthday, boolean gender, String fullname,
+               String idCard, String email,
+                String phone, String employeeImage, int accountId);
+
+    void update( String address,Date birthday, boolean gender, String fullname,
+                 String idCard, String email,
+                 String phone, String employeeImage, int accountId,int id);
 }

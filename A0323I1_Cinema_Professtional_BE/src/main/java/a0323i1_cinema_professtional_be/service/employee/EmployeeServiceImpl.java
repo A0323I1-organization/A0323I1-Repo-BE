@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.Date;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService{
@@ -16,17 +17,14 @@ public class EmployeeServiceImpl implements EmployeeService{
     private AccountRepository accountRepository;
     @Transactional
     @Override
-    public void create(Employee employee) {
-     employeeRepository.save(employee);
+    public void create(String address, Date birthday, boolean gender, String fullname, String idCard, String email, String phone, String employeeImage, int accountId) {
+     employeeRepository.createEmployee(address, birthday, gender, fullname, idCard, email, phone, employeeImage, accountId);
     }
 
     @Override
-    public void update(Employee employee) {
-        employeeRepository.save(employee);
+    public void update( String address, Date birthday, boolean gender, String fullname, String idCard, String email, String phone, String employeeImage, int accountId,int id) {
+        employeeRepository.updateEmployee(address,birthday,gender,fullname,idCard,email,phone,employeeImage,accountId,id);
     }
 
-    @Override
-    public Employee findById(int id) {
-        return employeeRepository.findById(id).orElse(null );
-    }
+
 }

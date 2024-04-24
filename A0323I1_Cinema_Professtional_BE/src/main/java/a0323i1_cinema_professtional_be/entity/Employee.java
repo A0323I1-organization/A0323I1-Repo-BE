@@ -2,6 +2,7 @@ package a0323i1_cinema_professtional_be.entity;
 
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -35,6 +36,7 @@ public class Employee {
     private String address;
     @Column(name = "employe_image",columnDefinition = "TEXT")
     private String employeeImage;
+    private boolean status;
     @ManyToOne
     @JoinColumn(name = "employee_account_id",referencedColumnName = "account_id")
     private Account account;
