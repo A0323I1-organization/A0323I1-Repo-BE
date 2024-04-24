@@ -2,6 +2,7 @@ package a0323i1_cinema_professtional_be.controller;
 
 
 
+
 import a0323i1_cinema_professtional_be.dto.movie.AllMovieDTO;
 import a0323i1_cinema_professtional_be.dto.movie.GetMovieDTO;
 import a0323i1_cinema_professtional_be.entity.Movie;
@@ -62,6 +63,7 @@ public class MovieController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<>(movie, HttpStatus.OK);
+
         }}
 //    @GetMapping("/list")
 //    public ResponseEntity<?> getAllMovie(@RequestParam(defaultValue = "") String find,
@@ -70,6 +72,7 @@ public class MovieController {
 //        Page<Movie> movies = movieService.findAllMovie(find, PageRequest.of(page, size));
 //        return new ResponseEntity<>(movies, HttpStatus.OK);
 //    }
+
 
     @GetMapping("")
     public ResponseEntity<List<MovieProjection>> getAll() {
@@ -89,6 +92,10 @@ public class MovieController {
         } else {
             return new ResponseEntity<>(movieList,HttpStatus.OK);
 
+
+
+
         }
     }
+
 }

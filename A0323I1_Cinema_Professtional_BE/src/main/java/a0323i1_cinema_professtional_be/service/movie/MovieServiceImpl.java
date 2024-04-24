@@ -1,10 +1,7 @@
 package a0323i1_cinema_professtional_be.service.movie;
 
 
-import a0323i1_cinema_professtional_be.dto.movie.AllMovieDTO;
-import a0323i1_cinema_professtional_be.dto.movie.GetMovieDTO;
-import a0323i1_cinema_professtional_be.repository.movie.MovieRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+
 
 import a0323i1_cinema_professtional_be.dto.ticket.MovieProjection;
 import a0323i1_cinema_professtional_be.entity.Movie;
@@ -13,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+
 
 
 /**
@@ -79,4 +77,5 @@ public class MovieServiceImpl implements MovieService{
         return movieRepository.findMovieByMovieName("%" + movieName + "%");
 
     }
+
 }

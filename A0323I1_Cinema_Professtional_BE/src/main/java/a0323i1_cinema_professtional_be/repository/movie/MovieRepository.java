@@ -1,4 +1,4 @@
-package a0323i1_cinema_professtional_be.repository.movie;
+
 
 
 import a0323i1_cinema_professtional_be.dto.movie.AllMovieDTO;
@@ -30,6 +30,7 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     @Query(value = "select m.movieId as movieId, m.movieImage as movieImage, m.movieName as movieName from Movie as m " +
             "where m.movieStartDay <= current_date() and m.movieEndDay >= current_date() ")
     List<AllMovieDTO> findAllMovieIsShowing();
+
 
 
     @Modifying
@@ -66,5 +67,6 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
 
     @Query(value = "select m.movieId as movieId, m.movieName as movieName, m.movieImage as movieImage from Movie as m where m.movieName like :movie_name")
     List<MovieProjection> findMovieByMovieName(@Param("movie_name") String movieName);
+
 
 }
