@@ -1,6 +1,5 @@
 package a0323i1_cinema_professtional_be.aop;
 
-import a0323i1_cinema_professtional_be.entity.Employee;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -9,37 +8,41 @@ import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.stereotype.Component;
-
+import java.util.logging.Logger;
 @Aspect
 @Component
 @EnableAspectJAutoProxy
 
-public class  LoggerEmployee {
-    static int count =0;
+public class LoggerEmployee {
+    static int count = 0;
+    Logger logger = Logger.getLogger(getClass().getName());
+
     @Before("execution(* a0323i1_cinema_professtional_be.controller.EmployeeController.findAll(..))")
-    public void countRequest(){
+    public void countRequest() {
         count++;
-        System.out.println("------------------------------------------------------------------");
-        System.out.println("Number of visitors: " + count);
-        System.out.println("------------------------------------------------------------------");
+        logger.info("------------------------------------------------------------------");
+        logger.info("Number of visitors: " + count);
+        logger.info("------------------------------------------------------------------");
     }
+
     @AfterReturning("execution(* a0323i1_cinema_professtional_be.controller.EmployeeController.deleteById(..))")
     public void loggingException(JoinPoint joinPoint) {
-        System.out.println("------------------------------------------------------------------");
+        logger.info("------------------------------------------------------------------");
         Object[] args = joinPoint.getArgs();
-        String id  = (String) args[0];
-        System.out.println("Delete employee with id : " + id);
-        System.out.println("----------------------------------------------------------");
+        String id = (String) args[0];
+        logger.info("Delete employee with id : " + id);
+        logger.info("----------------------------------------------------------");
     }
+
     @Around("execution(* a0323i1_cinema_professtional_be.controller.EmployeeController.deleteById(..))")
-        public Object loggingAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-            System.out.println("------------------------------------------------------------------");
-            System.out.println("-----------start");
-            Object object= proceedingJoinPoint.proceed();
-            System.out.println("-----------end");
-            System.out.println("------------------------------------------------------------------");
-            return object;
-        }
+    public Object loggingAround(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
+        logger.info("------------------------------------------------------------------");
+        logger.info("-----------start");
+        Object object = proceedingJoinPoint.proceed();
+        logger.info("-----------end");
+        logger.info("------------------------------------------------------------------");
+        return object;
+    }
 
 
 }

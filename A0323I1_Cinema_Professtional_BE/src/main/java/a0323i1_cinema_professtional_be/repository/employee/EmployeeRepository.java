@@ -1,7 +1,6 @@
 package a0323i1_cinema_professtional_be.repository.employee;
 
 import a0323i1_cinema_professtional_be.entity.Employee;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Page;
 
 import org.springframework.data.domain.Pageable;
@@ -11,7 +10,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import javax.transaction.Transactional;
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
-    @Query("SELECT e FROM Employee e JOIN e.account a WHERE a.status = 1 AND e.fullname LIKE :fullname AND e.phone LIKE :phone")
+    @Query("SELECT  e,a.status  FROM Employee e JOIN e.account a WHERE  e.fullname LIKE :fullname AND e.phone LIKE :phone")
     Page<Employee> findAll(@Param("fullname")String fullname, @Param("phone")String phone, Pageable pageable);
     @Modifying
     @Transactional

@@ -9,6 +9,7 @@ import java.util.List;
 public interface EmployeeService {
     Page<Employee> findAll(String fullname, String phone,Pageable pageable);
     void deleteEmployee(int id);
+    Employee findById(int id);
 
 
 }
