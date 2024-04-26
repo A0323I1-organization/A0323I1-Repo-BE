@@ -27,6 +27,39 @@ import java.util.List;
 @RequestMapping("/api/ticket")
 @Slf4j
 public class TicketController {
+<<<<<<< HEAD
+//    @Autowired
+//    private TicketService ticketService;
+//
+//    @GetMapping("/findAllTicket")
+//    public ResponseEntity<List<TicketProjection>> findAllTicket(){
+//        return new ResponseEntity<>(ticketService.finAllTicket(), HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/findAllTicketPage/{pageNo}")
+//    public ResponseEntity<Page<TicketProjection>> findAllTicketPage(@PathVariable("pageNo") int pageNo){
+//        return new ResponseEntity<>(ticketService.findAllTicketPages(pageNo), HttpStatus.OK);
+//    }
+//
+//    @GetMapping("/searchTicketList")
+//    public ResponseEntity<List<TicketProjection>> searchTicketList(@RequestParam("keyword") String keyword){
+//        return new ResponseEntity<>(ticketService.searchTicketList(keyword),HttpStatus.OK);
+//    }
+//    @GetMapping("/findById")
+//    public ResponseEntity<TicketProjection> findById(int id){
+//        return new ResponseEntity<>(ticketService.findById(id),HttpStatus.OK);
+//    }
+//
+//    @GetMapping(value = "/exportPdf",produces = MediaType.APPLICATION_PDF_VALUE)
+//    public ResponseEntity<InputStreamResource> ticketReports(@RequestParam("id") int id) throws IOException {
+//        TicketProjection ticket = ticketService.findById(id);
+//
+//        ByteArrayInputStream bis = ExportPDF.ticketReport(ticket);
+//        HttpHeaders  headers = new HttpHeaders();
+//        headers.add("Content-Disposition","attachment;filename=ticket.pdf");
+//        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bis));
+//    }
+=======
     @Autowired
     private TicketService ticketService;
 
@@ -75,5 +108,6 @@ public class TicketController {
         return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bis));
 
     }
+>>>>>>> 5d0c8c911dc2197b895e70732c6165f28301874a
 
 }

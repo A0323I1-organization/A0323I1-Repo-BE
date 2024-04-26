@@ -11,6 +11,16 @@ import java.util.List;
 
 public interface TicketService {
 
+<<<<<<< HEAD
+//    void createTicket(int invoiceId, List<Integer> seatId);
+//
+//    List<TicketDetail> getTicket(int invoiceId, List<Integer> seatId);
+//
+//    List<TicketProjection> finAllTicket();
+//    List<TicketProjection> searchTicketList(String keyword);
+//    TicketProjection findById(int id);
+//    Page<TicketProjection> findAllTicketPages(int currentPage);
+=======
     void createTicket(int invoiceId, List<Integer> seatId);
 
     List<TicketDetail> getTicket(int invoiceId, List<Integer> seatId);
@@ -20,6 +30,7 @@ public interface TicketService {
     TicketProjection findById(int id);
     Page<TicketProjection> findAllTicketPages(int currentPage);
     Page<TicketProjection> searchForStartAndEndDates(String startDate, String endDate, int currentPage);
+>>>>>>> 5d0c8c911dc2197b895e70732c6165f28301874a
 
 
 }

@@ -3,6 +3,7 @@ package a0323i1_cinema_professtional_be.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.format.annotation.DateTimeFormat;
@@ -22,15 +23,10 @@ public class Employee {
     @Column(name = "employee_id")
 
     private int employeeId;
+
+
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-
-
-
-    private int EmployeeId;
-
-    @Column(name = "image",columnDefinition = "TEXT")
-    private String image;
-
 
     @Column(name = "birth_day",columnDefinition = "DATE")
     private Date birthday;
@@ -53,6 +49,8 @@ public class Employee {
 
     @Column(name = "employe_image",columnDefinition = "TEXT")
     private String employeeImage;
+
+    private boolean status;
 
     @ManyToOne
     @JoinColumn(name = "employee_account_id",referencedColumnName = "account_id")

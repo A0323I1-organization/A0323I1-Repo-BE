@@ -1,4 +1,9 @@
 package a0323i1_cinema_professtional_be.service.movie;
+<<<<<<< HEAD
+import org.springframework.stereotype.Service;
+@Service
+public class MovieServiceImpl implements MovieService{
+=======
 
 
 
@@ -78,4 +83,5 @@ public class MovieServiceImpl implements MovieService{
 
     }
 
+>>>>>>> 5d0c8c911dc2197b895e70732c6165f28301874a
 }
