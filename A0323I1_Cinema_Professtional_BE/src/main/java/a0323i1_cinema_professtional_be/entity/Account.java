@@ -24,8 +24,8 @@ public class Account {
     private String password;
 
     private String email;
+    @Column(columnDefinition = "tinyint default 1")
     private boolean status;
-
     @ManyToOne
     @JoinColumn(name = "role_id",referencedColumnName = "role_id")
     private Role role;
@@ -33,7 +33,4 @@ public class Account {
     private List<Employee> employeeList;
     @OneToMany(mappedBy = "account")
     private List<Customer> customerList;
-
-    public Account(String username, String password) {
-    }
 }
