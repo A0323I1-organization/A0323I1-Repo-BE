@@ -16,7 +16,7 @@ public interface TicketService {
     void createTicket(int invoiceId, List<Integer> seatId);
 
     List<TicketDetail> getTicket(int invoiceId, List<Integer> seatId);
-=======
+
     List<TicketProjection> finAllTicket();
     List<TicketProjection> searchTicketList(String keyword);
     TicketProjection findById(int id);

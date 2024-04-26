@@ -58,7 +58,8 @@ public class TicketServiceImpl implements TicketService{
             list.addAll(tickets);
         }
         return list;
-=======
+    }
+
     @Override
     public List<TicketProjection> finAllTicket() {
         return ticketRepository.findAllTicket();
