@@ -30,5 +30,5 @@ public class EmployeeServiceImpl implements EmployeeService {
         employeeRepository.updateEmployee(address, birthday, gender, fullname, idCard, email, phone, employeeImage, accountId, id);
 
     }
-    
+
 }

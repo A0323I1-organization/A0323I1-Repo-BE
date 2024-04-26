@@ -27,7 +27,7 @@ import java.util.List;
 @RequestMapping("/api/ticket")
 @Slf4j
 public class TicketController {
-<<<<<<< HEAD
+
 //    @Autowired
 //    private TicketService ticketService;
 //
@@ -59,7 +59,7 @@ public class TicketController {
 //        headers.add("Content-Disposition","attachment;filename=ticket.pdf");
 //        return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bis));
 //    }
-=======
+
     @Autowired
     private TicketService ticketService;
 
@@ -108,6 +108,6 @@ public class TicketController {
         return ResponseEntity.ok().headers(headers).contentType(MediaType.APPLICATION_PDF).body(new InputStreamResource(bis));
 
     }
->>>>>>> 5d0c8c911dc2197b895e70732c6165f28301874a
+
 
 }
