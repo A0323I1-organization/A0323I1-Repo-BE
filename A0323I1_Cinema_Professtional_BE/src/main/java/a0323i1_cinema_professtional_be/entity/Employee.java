@@ -23,11 +23,11 @@ public class Employee {
     @Column(name = "employee_id")
 
     private int employeeId;
-<<<<<<< HEAD
 
-=======
+
+
     @DateTimeFormat(pattern = "yyyy-MM-dd")
->>>>>>> 3598acb6fdfe823d99993f2ca432678681c255dc
+
     @Column(name = "birth_day",columnDefinition = "DATE")
     private Date birthday;
 
