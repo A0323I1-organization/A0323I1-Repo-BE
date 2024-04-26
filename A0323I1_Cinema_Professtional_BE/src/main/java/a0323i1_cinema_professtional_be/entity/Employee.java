@@ -23,15 +23,6 @@ public class Employee {
 
     private int employeeId;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
-
-
-
-    private int EmployeeId;
-
-    @Column(name = "image",columnDefinition = "TEXT")
-    private String image;
-
-
     @Column(name = "birth_day",columnDefinition = "DATE")
     private Date birthday;
 
