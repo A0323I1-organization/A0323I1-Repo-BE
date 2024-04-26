@@ -1,6 +1,7 @@
 package a0323i1_cinema_professtional_be.repository.employee;
 
 
+<<<<<<< HEAD
 import a0323i1_cinema_professtional_be.entity.Employee;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -32,4 +33,8 @@ public interface EmployeeRepository extends JpaRepository<Employee,Integer> {
     void updateEmployee(@Param("address") String address, @Param("birthday") Date birthday, @Param("gender") boolean gender,
                         @Param("fullname") String fullname, @Param("idCard") String idCard, @Param("email") String email,
                         @Param("phone") String phone, @Param("image") String image, @Param("accountId") int accountId, @Param("id") int id);
+=======
+@Repository
+public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
+>>>>>>> 3598acb6fdfe823d99993f2ca432678681c255dc
 }

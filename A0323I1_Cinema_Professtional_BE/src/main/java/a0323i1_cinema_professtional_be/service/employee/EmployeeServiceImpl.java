@@ -15,6 +15,7 @@ import java.util.Date;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
+<<<<<<< HEAD
     @Autowired
     EmployeeRepository employeeRepository;
 
@@ -31,4 +32,6 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
 
+=======
+>>>>>>> 3598acb6fdfe823d99993f2ca432678681c255dc
 }
