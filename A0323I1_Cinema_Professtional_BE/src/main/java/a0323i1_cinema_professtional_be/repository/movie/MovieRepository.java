@@ -1,6 +1,6 @@
 package a0323i1_cinema_professtional_be.repository.movie;
 
-import a0323i1_cinema_professtional_be.dto.MovieProjection;
+
 import a0323i1_cinema_professtional_be.dto.movie.AllMovieDTO;
 import a0323i1_cinema_professtional_be.entity.Movie;
 import com.google.api.gax.paging.Page;
@@ -10,25 +10,24 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 
-<<<<<<< HEAD
+
 import java.awt.print.Pageable;
 import java.time.LocalDate;
-=======
+
 import a0323i1_cinema_professtional_be.dto.movie.AllMovieDTO;
 import a0323i1_cinema_professtional_be.dto.movie.GetMovieDTO;
 
 import a0323i1_cinema_professtional_be.dto.ticket.MovieProjection;
 
 import a0323i1_cinema_professtional_be.entity.Movie;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.Pageable;
+
+
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
->>>>>>> 5d0c8c911dc2197b895e70732c6165f28301874a
 import java.util.Date;
 import java.util.List;
 

@@ -1,7 +1,7 @@
-<<<<<<< HEAD
+
 package a0323i1_cinema_professtional_be.service.movie;
-public interface MovieService{
-=======
+
+
 
 
 import a0323i1_cinema_professtional_be.dto.movie.AllMovieDTO;
@@ -28,5 +28,4 @@ public interface MovieService {
     List<MovieProjection> findMovieByMovieName(String movieName);
 
 
->>>>>>> 5d0c8c911dc2197b895e70732c6165f28301874a
 }
