@@ -11,37 +11,4 @@ import java.util.List;
 
 @Service
 public class EmployeeServiceImpl implements EmployeeService {
-    @Autowired
-    EmployeeRepository employeeRepository;
-
-    @Override
-    public Page<Employee> findAll(String fullname,String phone,Pageable pageable) {
-        return employeeRepository.findAll(fullname,phone,pageable);
-    }
-
-    @Override
-    @Transactional
-    public void deleteEmployee(int id) {
-           Employee employeeDelete = employeeRepository.findEmployeeById(id);
-           if(employeeDelete== null){
-               throw new ResourceNotFoundException("Employee", " Id ", id);
-           }else{
-               employeeRepository.deleteEmployeeById(id);
-           }
-    }
-  @Transactional
-    @Override
-    public void create(Employee employee) {
-     employeeRepository.save(employee);
-    }
-
-    @Override
-    public void update(Employee employee) {
-        employeeRepository.save(employee);
-    }
-
-    @Override
-    public Employee findById(int id) {
-        return employeeRepository.findById(id).orElse(null );
-    }
 }
