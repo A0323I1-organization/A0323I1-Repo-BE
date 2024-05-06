@@ -1,0 +1,5 @@
+
+{	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(³Â ‚úÿÿÿÿ8§í¼åô1
+v	java:S116"ZRename this field "CustomerService" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ıÁí®8¬í¼åô1
+_
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄŞ8®í¼åô1
