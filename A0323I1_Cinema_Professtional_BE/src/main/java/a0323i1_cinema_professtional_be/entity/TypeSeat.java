@@ -18,10 +18,14 @@ public class TypeSeat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "type_seat_id")
     private int typeSeatId;
-    @Column(name = "type_seat_name")
+
+    @Column(name = "name")
     private String typeSeatName;
+
+
     @Column(name = "type_seat_price")
-    private String typeSeatPrice;
+    private double typeSeatPrice;
+
 
     @OneToMany(mappedBy = "typeSeat")
     private List<Seat> seats;

@@ -18,16 +18,20 @@ public class Room {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "room_id")
     private int roomId;
+
     @Column(name = "room_name")
     private String roomName;
+
     @Column(name = "room_payload")
     private int roomPayload;
+
     @Column(name = "room_detail")
     private String roomDetail;
 
-    @OneToMany(mappedBy = "room")
-    private List<Seat> seats;
 
     @OneToMany(mappedBy = "room")
     private List<CalendarShow> calendarShows;
+
+
+
 }

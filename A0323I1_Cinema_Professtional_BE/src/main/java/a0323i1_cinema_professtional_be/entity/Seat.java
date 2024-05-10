@@ -18,14 +18,28 @@ public class Seat {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "seat_id")
     private int seatId;
+
+    @Column(name = "name")
     private String seatName;
+
     private boolean checkSeat;
+
     @ManyToOne
-    @JoinColumn(name = "type_seat_id",referencedColumnName = "type_seat_id")
+    @JoinColumn(name = "type_seat_id", referencedColumnName = "type_seat_id")
     private TypeSeat typeSeat;
+
     @ManyToOne
-    @JoinColumn(name = "room_id",referencedColumnName = "room_id")
-    private Room room;
+    @JoinColumn(name = "calendar_show_id", referencedColumnName = "calendar_show_id")
+    private CalendarShow calendarShow;
+
     @OneToMany(mappedBy = "seat")
     private List<Ticket> ticketList;
+
+    public boolean getCheckSeat() {
+        return checkSeat;
+    }
+
+    public void setCheckSeat(boolean checkSeat) {
+        this.checkSeat = checkSeat;
+    }
 }
