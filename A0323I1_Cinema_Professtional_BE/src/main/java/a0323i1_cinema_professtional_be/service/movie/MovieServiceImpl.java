@@ -1,6 +1,7 @@
 package a0323i1_cinema_professtional_be.service.movie;
 
 
+import a0323i1_cinema_professtional_be.dto.MovieProjection;
 import a0323i1_cinema_professtional_be.dto.movie.AllMovieDTO;
 import a0323i1_cinema_professtional_be.dto.movie.GetMovieDTO;
 import a0323i1_cinema_professtional_be.repository.movie.MovieRepository;
@@ -42,5 +43,24 @@ public class MovieServiceImpl implements MovieService {
         return movieRepository.findTop3Movies();
     }
 
+    @Override
+    public List<MovieProjection> findAllMovie() {
+        return movieRepository.findAllMovie();
+    }
+
+    @Override
+    public List<MovieProjection> findMovieByMovieName(String movieName,String movieImage) {
+        return movieRepository.findMovieByMovieName("%" + movieName + "%","%" + movieImage + "%");
+    }
+
+    @Override
+    public List<MovieProjection> findAllMovieIsShowings() {
+        return movieRepository.findAllMovieIsShowing();
+    }
+
+    @Override
+    public List<MovieProjection> findAllUpcomingMovie() {
+        return movieRepository.findAllUpcomingMovie();
+    }
 
 }

@@ -1,6 +1,7 @@
 package a0323i1_cinema_professtional_be.controller;
 
 
+import a0323i1_cinema_professtional_be.dto.MovieProjection;
 import a0323i1_cinema_professtional_be.dto.movie.AllMovieDTO;
 import a0323i1_cinema_professtional_be.dto.movie.GetMovieDTO;
 import a0323i1_cinema_professtional_be.service.movie.MovieService;
@@ -51,6 +52,46 @@ public class MovieController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         } else {
             return new ResponseEntity<>(movie, HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("")
+    public ResponseEntity<List<MovieProjection>> getAll() {
+        List<MovieProjection> movieList = movieService.findAllMovie();
+        if(movieList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(movieList,HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity<List<MovieProjection>> getAllMovieByMovieName(@RequestParam(required = false,defaultValue = "") String name,@RequestParam(required = false,defaultValue = "") String image) {
+        List<MovieProjection> movieList = movieService.findMovieByMovieName(name,image);
+        if(movieList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        } else {
+            return new ResponseEntity<>(movieList,HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/showing")
+    public ResponseEntity<List<MovieProjection>> getAllMovieIsShowing() {
+        List<MovieProjection> movieList = movieService.findAllMovieIsShowings();
+        if(movieList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(movieList,HttpStatus.OK);
+        }
+    }
+
+    @GetMapping("/upcoming")
+    public ResponseEntity<List<MovieProjection>> getAllUpcomingMovie() {
+        List<MovieProjection> movieList = movieService.findAllUpcomingMovie();
+        if(movieList.isEmpty()) {
+            return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+        } else {
+            return new ResponseEntity<>(movieList,HttpStatus.OK);
         }
     }
 

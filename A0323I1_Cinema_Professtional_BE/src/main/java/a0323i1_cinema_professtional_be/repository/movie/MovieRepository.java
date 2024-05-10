@@ -1,6 +1,7 @@
 package a0323i1_cinema_professtional_be.repository.movie;
 
 
+import a0323i1_cinema_professtional_be.dto.MovieProjection;
 import a0323i1_cinema_professtional_be.dto.movie.AllMovieDTO;
 import a0323i1_cinema_professtional_be.dto.movie.GetMovieDTO;
 import a0323i1_cinema_professtional_be.entity.Movie;
@@ -23,5 +24,17 @@ public interface MovieRepository extends JpaRepository<Movie, Integer> {
     @Query(value = "select m.movieId as movieId, m.movieImage as movieImage, m.movieName as movieName from Movie as m " +
             " where m.movieStartDay <= current_date() and m.movieEndDay >= current_date()")
     List<AllMovieDTO> findTop3Movies();
+
+    @Query(value = "select m.movieId as movieId, m.movieName as movieName, m.movieImage as movieImage from Movie as m")
+    List<MovieProjection> findAllMovie();
+
+    @Query(value = "select m.movieId as movieId, m.movieName as movieName, m.movieImage as movieImage from Movie as m where m.movieName like :movie_name and m.movieImage like :movie_image")
+    List<MovieProjection> findMovieByMovieName(@Param("movie_name") String movieName,@Param("movie_image") String movieImage);
+
+    @Query(value = "select m.movieId as movieId, m.movieName as movieName, m.movieImage as movieImage from Movie as m where m.movieStartDay <= current_date() order by m.movieStartDay desc")
+    List<MovieProjection> findAllMovieIsShowing();
+
+    @Query(value = "select m.movieId as movieId, m.movieName as movieName, m.movieImage as movieImage from Movie as m where m.movieStartDay > current_date() order by m.movieStartDay asc")
+    List<MovieProjection> findAllUpcomingMovie();
 
 }
