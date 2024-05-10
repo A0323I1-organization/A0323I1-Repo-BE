@@ -1,0 +1,13 @@
+
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ï…«ª8ÿÔ£ñõ1J$cdee885d-741f-4704-afab-63eed2a2c74c
+¤
+java:S4144“"[Update this method so that its implementation is not identical to "getUsername" on line 61.(×Õ¥þýÿÿÿÿ8à‰É‘ö1J$0b4b6a6b-b577-42f0-86ba-e8164a3d2924
+i
+java:S19482"&Make "role" transient or serializable.(âÈ»ú8£¬ÚŽö1J$93b86948-b947-4ed6-9579-738bdfe6cad0
+p
+java:S19485"-Make "invoiceList" transient or serializable.(¿ê¥î8†Õ£ñõ1J$f65587d3-29c1-4180-8c73-e77a672bab3d
+‰	java:S107U"BConstructor has 12 parameters, which is greater than 7 authorized.(ôôŠïþÿÿÿÿ8ûöÇ‘ö1J$c6cd36b3-1108-4142-926b-a2cc6fd22408
+‹
+java:S4275="HRefactor this getter so that it actually refers to the field "username".(ú´­÷8‹Õ£ñõ1J$6197833f-1efc-45a6-8fdb-e6a9e72ceca9
+v
+java:S1068"3Remove this unused "conformPassword" private field.(”ûõ®8ÏòË‘ö1J$2e16bb1f-082f-43fe-929e-ef74a681685f

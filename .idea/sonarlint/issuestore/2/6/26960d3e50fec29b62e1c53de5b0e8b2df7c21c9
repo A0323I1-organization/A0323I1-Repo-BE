@@ -1,0 +1,10 @@
+
+œ	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(áÂÞÏ8þŽ¹‘ö1J$b27f88d1-f8cb-4762-b319-6b284fcf2c0c
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8ÀÌ¹‘ö1J$b8caaddd-8868-4b85-9ad6-7436ac7fabdb
+…
+java:S6813"BRemove this field injection and use constructor injection instead.(êæÄÞ8—õ¹‘ö1J$61659fd1-5f8f-4795-93fc-838e4a18a49e
+¢
+java:S3305"ZInject this field value directly into "securityFilterChain", the only method that uses it.(Æ†ãÎùÿÿÿÿ8ÊÌ¹‘ö1J$bffeab2e-e00a-4cc2-a982-9aff9063a90e
+†
+java:S5344<">Don't use the default "PasswordEncoder" relying on plain-text.(§É«Éþÿÿÿÿ8®õ¹‘ö1J$e8b97ff4-3609-4dbd-a835-0c8afcd7ecc7

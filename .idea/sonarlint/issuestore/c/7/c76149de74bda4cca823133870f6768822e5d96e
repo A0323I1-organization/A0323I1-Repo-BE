@@ -1,0 +1,3 @@
+
+o	java:S120"ZRename this package name to match the regular expression '^[a-z_]+(\.[a-z_][a-z0-9_]*)*$'.(ï…«ª
+j	java:S116"URename this field "EmployeeId" to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(Š‰¬Ó
