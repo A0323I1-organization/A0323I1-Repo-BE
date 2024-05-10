@@ -23,22 +23,37 @@ repositories {
 
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
-//    implementation 'org.springframework.boot:spring-boot-starter-security'
-//    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
-    //    implementation 'org.thymeleaf.extras:thymeleaf-extras-springsecurity5'
     implementation 'org.springframework.boot:spring-boot-starter-validation'
     implementation 'org.springframework.boot:spring-boot-starter-web'
-
-
-    // https://mvnrepository.com/artifact/com.google.zxing/core
+    implementation 'org.springframework.boot:spring-boot-starter-mail'
     implementation group: 'com.google.zxing', name: 'core', version: '3.4.1'
-// https://mvnrepository.com/artifact/com.google.zxing/javase
     implementation group: 'com.google.zxing', name: 'javase', version: '3.4.1'
-
-    // https://mvnrepository.com/artifact/com.paypal.sdk/paypal-core
     implementation group: 'com.paypal.sdk', name: 'paypal-core', version: '1.7.2'
-    // https://mvnrepository.com/artifact/com.paypal.sdk/rest-api-sdk
     implementation group: 'com.paypal.sdk', name: 'rest-api-sdk', version: '1.14.0'
+
+    implementation 'com.google.firebase:firebase-admin:9.2.0'
+
+//  Export PDF
+    // https://mvnrepository.com/artifact/com.itextpdf/itext7-core
+    implementation group: 'com.itextpdf', name: 'itext7-core', version: '8.0.3', ext: 'pom'
+    // https://mvnrepository.com/artifact/com.itextpdf/barcodes
+    implementation group: 'com.itextpdf', name: 'barcodes', version: '7.0.4'
+// https://mvnrepository.com/artifact/com.itextpdf/font-asian
+    testImplementation group: 'com.itextpdf', name: 'font-asian', version: '7.0.4'
+// https://mvnrepository.com/artifact/com.itextpdf/forms
+    implementation group: 'com.itextpdf', name: 'forms', version: '7.0.4'
+// https://mvnrepository.com/artifact/com.itextpdf/hyph
+    testImplementation group: 'com.itextpdf', name: 'hyph', version: '7.0.4'
+// https://mvnrepository.com/artifact/com.itextpdf/io
+    implementation group: 'com.itextpdf', name: 'io', version: '7.0.4'
+// https://mvnrepository.com/artifact/com.itextpdf/kernel
+    implementation group: 'com.itextpdf', name: 'kernel', version: '7.0.4'
+// https://mvnrepository.com/artifact/com.itextpdf/layout
+    implementation group: 'com.itextpdf', name: 'layout', version: '7.0.4'
+// https://mvnrepository.com/artifact/com.itextpdf/pdfa
+    implementation group: 'com.itextpdf', name: 'pdfa', version: '7.0.4'
+// https://mvnrepository.com/artifact/com.itextpdf/sign
+    implementation group: 'com.itextpdf', name: 'sign', version: '7.0.4'
 
     compileOnly 'org.projectlombok:lombok'
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
