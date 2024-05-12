@@ -10,6 +10,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
+import java.util.List;
+
 /**
  * Statistics data of movie
  *
@@ -79,6 +82,22 @@ public class StatisticController {
             @RequestParam(defaultValue = "true") boolean sortDirection)  {
         return ResponseEntity.ok(statisticService.getAllTopShowTimePages(pageNo, pageSize, sortBy,sortDirection));
     }
-
-
+    @GetMapping("/movie-sale-date")
+    public ResponseEntity<List<MovieSales>> getAllMovieSaleDate(
+            @RequestParam(defaultValue = "year") String filterDate)  {
+        return ResponseEntity.ok(statisticService.getMovieSaleDate(filterDate));
+    }
+    @GetMapping("/top-customer-date")
+    public ResponseEntity<List<CustomerTop>> getAllTopCustomerTopDate(
+            @RequestParam(defaultValue = "year") String filterDate)  {
+        return ResponseEntity.ok(statisticService.getCustomerTopDate(filterDate));
+    }@GetMapping("/top-movie-type-date")
+    public ResponseEntity<List<MovieTopType>> getAllMovieTopTypeDate(
+            @RequestParam(defaultValue = "year") String filterDate)  {
+        return ResponseEntity.ok(statisticService.getMovieTypeDate(filterDate));
+    }@GetMapping("/top-show-time-date")
+    public ResponseEntity<List<ShowTimeTop>> getAllShowTimeTopDate(
+            @RequestParam(defaultValue = "year") String filterDate)  {
+        return ResponseEntity.ok(statisticService.getShowTimeDate(filterDate));
+    }
 }
