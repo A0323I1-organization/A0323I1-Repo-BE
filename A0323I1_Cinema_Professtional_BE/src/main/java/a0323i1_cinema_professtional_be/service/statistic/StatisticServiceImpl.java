@@ -12,6 +12,8 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -61,4 +63,53 @@ public class StatisticServiceImpl implements StatisticService{
         Pageable paging = (sortDirection) ? PageRequest.of(pageNo, pageSize, Sort.by(sortBy).ascending()) : PageRequest.of(pageNo, pageSize, Sort.by(sortBy).descending());
         return repository.getTopShowTimePage(paging);
     }
+
+    @Override
+    public List<MovieSales> getMovieSaleDate(String filterDate) {
+        if("date".equals(filterDate)) {
+            return repository.findMovieSalesByDate();
+        } else if("month".equals(filterDate)) {
+            return repository.findMovieSalesByMonth();
+        } else if("year".equals(filterDate)) {
+            return repository.findMovieSalesByYear();
+        } else
+            return repository.getMovieSales();
+    }
+
+    @Override
+    public List<CustomerTop> getCustomerTopDate(String filterDate) {
+        if("date".equals(filterDate)) {
+            return repository.getTopCustomersByDate();
+        } else if("month".equals(filterDate)) {
+            return repository.getTopCustomersByMonth();
+        } else if("year".equals(filterDate)) {
+            return repository.getTopCustomersByYear();
+        } else
+            return repository.getTopCustomers();
+    }
+
+    @Override
+    public List<MovieTopType> getMovieTypeDate(String filterDate) {
+        if("date".equals(filterDate)) {
+            return repository.getTopTypeMovieByDate();
+        } else if("month".equals(filterDate)) {
+            return repository.getTopTypeMovieByMonth();
+        } else if("year".equals(filterDate)) {
+            return repository.getTopTypeMovieByYear();
+        } else
+            return repository.getTopTypeMovie();
+    }
+
+    @Override
+    public List<ShowTimeTop> getShowTimeDate(String filterDate) {
+        if("date".equals(filterDate)) {
+            return repository.getTopShowTimeByDate();
+        } else if("month".equals(filterDate)) {
+            return repository.getTopShowTimeByMonth();
+        } else if("year".equals(filterDate)) {
+            return repository.getTopShowTimeByYear();
+        } else
+            return repository.getTopShowTimeByDate();
+    }
+
 }

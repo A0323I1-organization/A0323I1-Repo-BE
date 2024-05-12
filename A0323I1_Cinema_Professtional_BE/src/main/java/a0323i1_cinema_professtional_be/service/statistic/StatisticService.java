@@ -6,6 +6,7 @@ import a0323i1_cinema_professtional_be.dto.statistics.MovieTopType;
 import a0323i1_cinema_professtional_be.dto.statistics.ShowTimeTop;
 import org.springframework.data.domain.Page;
 
+import java.util.Date;
 import java.util.List;
 
 public interface StatisticService {
@@ -34,5 +35,8 @@ public interface StatisticService {
     Page<CustomerTop> getAllCustomerTopPages(Integer pageNo, Integer pageSize, String sortBy);
     Page<MovieTopType> getAllTopMovieTypePages(Integer pageNo, Integer pageSize, String sortBy,boolean sortDirection);
     Page<ShowTimeTop> getAllTopShowTimePages(Integer pageNo, Integer pageSize, String sortBy,boolean sortDirection);
-
+    List<MovieSales> getMovieSaleDate(String filterDate);
+    List<CustomerTop> getCustomerTopDate(String filterDate);
+    List<MovieTopType> getMovieTypeDate(String filterDate);
+    List<ShowTimeTop> getShowTimeDate(String filterDate);
 }
