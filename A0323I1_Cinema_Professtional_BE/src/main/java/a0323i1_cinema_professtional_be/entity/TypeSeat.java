@@ -1,6 +1,7 @@
 package a0323i1_cinema_professtional_be.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -28,5 +29,6 @@ public class TypeSeat {
 
 
     @OneToMany(mappedBy = "typeSeat")
+    @JsonManagedReference
     private List<Seat> seats;
 }

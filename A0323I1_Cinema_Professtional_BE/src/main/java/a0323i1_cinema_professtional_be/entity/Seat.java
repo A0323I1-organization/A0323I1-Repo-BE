@@ -1,6 +1,7 @@
 package a0323i1_cinema_professtional_be.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -25,10 +26,12 @@ public class Seat {
     private boolean checkSeat;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "type_seat_id", referencedColumnName = "type_seat_id")
     private TypeSeat typeSeat;
 
     @ManyToOne
+    @JsonBackReference
     @JoinColumn(name = "calendar_show_id", referencedColumnName = "calendar_show_id")
     private CalendarShow calendarShow;
 

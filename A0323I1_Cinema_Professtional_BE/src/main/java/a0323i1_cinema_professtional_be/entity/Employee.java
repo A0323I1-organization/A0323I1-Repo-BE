@@ -2,6 +2,7 @@ package a0323i1_cinema_professtional_be.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,11 +20,14 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "employee_id")
-    private int EmployeeId;
+    private int employeeId;
+
+    @Column(name = "employee_iden",columnDefinition = "TEXT")
+    private String employeeIden;
 
     @Column(name = "image",columnDefinition = "TEXT")
     private String image;
-    
+
 
     @Column(name = "birth_day",columnDefinition = "DATE")
     private Date birthday;
@@ -42,7 +46,9 @@ public class Employee {
     @Column(name = "phone",columnDefinition = "VARCHAR(28)")
     private String phone;
 
+    @Column(name = "address",columnDefinition = "TEXT")
     private String address;
+
     @Column(name = "employe_image",columnDefinition = "TEXT")
     private String employeeImage;
     @ManyToOne
@@ -50,6 +56,7 @@ public class Employee {
     @JsonBackReference
     private Account account;
 
+    @JsonManagedReference
     @OneToMany(mappedBy = "employee")
     private List<Invoice> invoiceList;
 

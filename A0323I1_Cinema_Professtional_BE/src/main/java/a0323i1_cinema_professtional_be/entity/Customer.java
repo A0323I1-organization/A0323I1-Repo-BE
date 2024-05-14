@@ -1,6 +1,8 @@
 package a0323i1_cinema_professtional_be.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -47,10 +49,7 @@ public class Customer {
 
 
 
-    @ManyToOne
-    @JoinColumn(name = "customer_account_id",referencedColumnName = "account_id")
-    private Account account;
-
+@JsonManagedReference
     @OneToMany(mappedBy = "customer")
     private List<Invoice> invoiceList;
 

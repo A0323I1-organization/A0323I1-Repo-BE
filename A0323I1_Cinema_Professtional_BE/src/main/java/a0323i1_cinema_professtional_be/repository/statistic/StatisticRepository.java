@@ -361,7 +361,7 @@ public interface StatisticRepository extends PagingAndSortingRepository<Movie, I
             "LEFT JOIN \n" +
             "\tseat s on cs.calendar_show_id = s.calendar_show_id\n" +
             "LEFT JOIN\n" +
-            "\tticket t on s.seat_id = t.ticket_id\n" +
+            "\tticket t on s.seat_id = t.seat_id\n" +
             "LEFT JOIN\n" +
             "\tshow_time st on cs.show_time_id = st.show_time_id\n" +
             "where year(st.show_date) = year(curdate())" +

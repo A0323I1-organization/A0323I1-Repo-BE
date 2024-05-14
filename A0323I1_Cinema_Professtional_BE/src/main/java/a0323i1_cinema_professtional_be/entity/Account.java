@@ -2,6 +2,7 @@ package a0323i1_cinema_professtional_be.entity;
 
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -32,8 +33,12 @@ public class Account {
     @JoinColumn(name = "role_id",referencedColumnName = "role_id")
     @JsonBackReference
     private Role role;
+
+   @JsonManagedReference
     @OneToMany(mappedBy = "account")
     private List<Employee> employeeList;
-    @OneToMany(mappedBy = "account")
-    private List<Customer> customerList;
+
+
+
+
 }
