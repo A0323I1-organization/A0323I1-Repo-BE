@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
+import java.util.List;
 
 
 @Service
@@ -34,4 +35,12 @@ public class EmployeeServiceImpl implements EmployeeService {
     public Employee findById(int id) {
         return employeeRepository.findEmployeeById(id);
     }
+
+    @Override
+    public Integer randomId() {
+        List<Integer> list = employeeRepository.findEmployees();
+        return  list.get(1);
+    }
+
+
 }

@@ -4,6 +4,7 @@ import a0323i1_cinema_professtional_be.entity.Employee;
 import a0323i1_cinema_professtional_be.exception.ApiResponse;
 import a0323i1_cinema_professtional_be.exception.ResourceNotFoundException;
 import a0323i1_cinema_professtional_be.service.employee.EmployeeService;
+import a0323i1_cinema_professtional_be.service.invoice.InvoiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -24,6 +25,8 @@ import java.util.List;
 public class EmployeeController {
     @Autowired
     private EmployeeService employeeService;
+    @Autowired
+    private InvoiceService invoiceService;
 
     @GetMapping("")
     public ResponseEntity<Page<Employee>> findAll(@PageableDefault(page = 0, size = 5) Pageable pageable,
@@ -45,6 +48,7 @@ public class EmployeeController {
             if (Integer.parseInt(number[i]) <= 0 ) {
                 return new ResponseEntity<>(new ApiResponse("Invalid id", false), HttpStatus.BAD_REQUEST);
             } else {
+
                 employeeService.deleteEmployee(Integer.parseInt(number[i]));
                 result.add(number[i]);
             }

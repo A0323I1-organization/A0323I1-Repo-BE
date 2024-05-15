@@ -30,10 +30,6 @@ public class Invoice {
     @JoinColumn(name = "customer_id",referencedColumnName = "customer_id")
     private Customer customer;
 
-    @ManyToOne
-    @JsonBackReference
-    @JoinColumn(name = "employee_id",referencedColumnName = "employee_id")
-    private Employee employee;
 
 
     @JsonManagedReference

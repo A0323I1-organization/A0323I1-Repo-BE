@@ -56,9 +56,7 @@ public class Employee {
     @JsonBackReference
     private Account account;
 
-    @JsonManagedReference
-    @OneToMany(mappedBy = "employee")
-    private List<Invoice> invoiceList;
+
 
 
 }

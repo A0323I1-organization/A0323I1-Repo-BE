@@ -7,3 +7,5 @@ eA0323I1_Cinema_Professtional_BE/src/main/java/a0323i1_cinema_professtional_be/a
 zA0323I1_Cinema_Professtional_BE/src/main/java/a0323i1_cinema_professtional_be/A0323I1CinemaProfesstionalBeApplication.java,9\1\91e49446a417c13ec1b897785ccceb6d1f7395c9
 \
 ,A0323I1_Cinema_Professtional_BE/build.gradle,5\6\56d9e6b8f25c603c985c5ebbcc1b2de9b1cd45a1
+ 
+pA0323I1_Cinema_Professtional_BE/src/main/java/a0323i1_cinema_professtional_be/controller/EmployeeController.java,3\2\32aaea228d70f0039d8bb22d1c5a5d30e11e647d

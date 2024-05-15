@@ -23,8 +23,8 @@ public class InvoiceServiceImpl implements InvoiceService{
      * @param employeeId
      */
     @Override
-    public void createInvoice(LocalDateTime dayPay, int customerId, int employeeId) {
-     invoiceRepository.createInvoice(dayPay,customerId,employeeId);
+    public void createInvoice(LocalDateTime dayPay, int customerId) {
+     invoiceRepository.createInvoice(dayPay,customerId);
 
     }
 
@@ -37,5 +37,10 @@ public class InvoiceServiceImpl implements InvoiceService{
     @Override
     public Invoice getInvoiceByCustomerId(LocalDateTime dayPay, int customerId) {
         return invoiceRepository.getInvoiceByCustomerId(dayPay, customerId);
+    }
+
+    @Override
+    public void updateInvoice(int id) {
+        invoiceRepository.updateInvoice(id);
     }
 }

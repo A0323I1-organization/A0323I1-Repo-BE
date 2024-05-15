@@ -9,6 +9,8 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import javax.transaction.Transactional;
+import java.util.List;
+
 public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     @Query("SELECT  e,a.status  FROM Employee e JOIN e.account a WHERE  e.fullname LIKE :fullname AND e.phone LIKE :phone")
     Page<Employee> findAll(@Param("fullname")String fullname, @Param("phone")String phone, Pageable pageable);
@@ -20,6 +22,9 @@ public interface EmployeeRepository extends JpaRepository<Employee, Integer> {
     @Query("SELECT e FROM Employee e WHERE e.id = :id")
     Employee findEmployeeById(@Param("id") int id);
 
+
+    @Query("SELECT e.employeeId FROM Employee e")
+    List<Integer> findEmployees();
 
 
 

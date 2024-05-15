@@ -143,7 +143,7 @@ public interface StatisticRepository extends PagingAndSortingRepository<Movie, I
             "LEFT JOIN \n" +
             "\tseat s on cs.calendar_show_id = s.calendar_show_id\n" +
             "LEFT JOIN\n" +
-            "\tticket t on s.seat_id = t.ticket_id\n" +
+            "\tticket t on s.seat_id = t.seat_id\n" +
             "group by\n" +
             "\tmt.movie_type_id\n",
             countQuery = "select\n" +
@@ -160,7 +160,7 @@ public interface StatisticRepository extends PagingAndSortingRepository<Movie, I
                     "LEFT JOIN \n" +
                     "\tseat s on cs.calendar_show_id = s.calendar_show_id\n" +
                     "LEFT JOIN\n" +
-                    "\tticket t on s.seat_id = t.ticket_id\n" +
+                    "\tticket t on s.seat_id = t.seat_id\n" +
                     "group by\n" +
                     "\tmt.movie_type_id\n"
             ,nativeQuery = true)
@@ -204,7 +204,8 @@ public interface StatisticRepository extends PagingAndSortingRepository<Movie, I
             " JOIN type_seat ts ON s.type_seat_id = ts.type_seat_id \n" +
             " JOIN ticket t ON s.seat_id = t.seat_id \n" +
             " JOIN show_time st ON cs.show_time_id = st.show_time_id\n" +
-            "\twhere date(st.show_date) = date(curdate())\n" +
+            " join invoice iv on t.invoice_id = iv.invoice_id\n" +
+            "\twhere date(iv.date_payment) = date(curdate())\n" +
             " GROUP BY m.movie_id ;", nativeQuery = true)
     List<MovieSales> findMovieSalesByDate();
     @Query(value = "SELECT m.movie_name as movieName,\n" +
@@ -216,7 +217,8 @@ public interface StatisticRepository extends PagingAndSortingRepository<Movie, I
             " JOIN type_seat ts ON s.type_seat_id = ts.type_seat_id \n" +
             " JOIN ticket t ON s.seat_id = t.seat_id \n" +
             " JOIN show_time st ON cs.show_time_id = st.show_time_id\n" +
-            "\twhere month(st.show_date) = month(curdate())\n" +
+            " join invoice iv on t.invoice_id = iv.invoice_id\n" +
+            "\twhere month(iv.date_payment) = month(curdate())\n" +
             " GROUP BY m.movie_id ;", nativeQuery = true)
     List<MovieSales> findMovieSalesByMonth();
     @Query(value = "SELECT m.movie_name as movieName,\n" +
@@ -228,7 +230,8 @@ public interface StatisticRepository extends PagingAndSortingRepository<Movie, I
             " JOIN type_seat ts ON s.type_seat_id = ts.type_seat_id \n" +
             " JOIN ticket t ON s.seat_id = t.seat_id \n" +
             " JOIN show_time st ON cs.show_time_id = st.show_time_id\n" +
-            "\twhere year(st.show_date) = year(curdate())\n" +
+            " join invoice iv on t.invoice_id = iv.invoice_id\n" +
+            "\twhere year(iv.date_payment) = year(curdate())\n" +
             " GROUP BY m.movie_id ;", nativeQuery = true)
     List<MovieSales> findMovieSalesByYear();
 
@@ -319,10 +322,10 @@ public interface StatisticRepository extends PagingAndSortingRepository<Movie, I
             "LEFT JOIN \n" +
             "\tseat s on cs.calendar_show_id = s.calendar_show_id\n" +
             "LEFT JOIN\n" +
-            "\tticket t on s.seat_id = t.ticket_id\n" +
+            "\tticket t on s.seat_id = t.seat_id\n" +
             "LEFT JOIN\n" +
-            "\tshow_time st on cs.show_time_id = st.show_time_id\n" +
-            "where date(st.show_date) = date(curdate())" +
+            "\tinvoice iv on t.invoice_id = iv.invoice_id\n" +
+            "where date(iv.date_payment) = date(curdate())\n" +
             "group by\n" +
             "\tmt.movie_type_id;", nativeQuery = true)
     List<MovieTopType> getTopTypeMovieByDate();
@@ -340,10 +343,10 @@ public interface StatisticRepository extends PagingAndSortingRepository<Movie, I
             "LEFT JOIN \n" +
             "\tseat s on cs.calendar_show_id = s.calendar_show_id\n" +
             "LEFT JOIN\n" +
-            "\tticket t on s.seat_id = t.ticket_id\n" +
+            "\tticket t on s.seat_id = t.seat_id\n" +
             "LEFT JOIN\n" +
-            "\tshow_time st on cs.show_time_id = st.show_time_id\n" +
-            "where month(st.show_date) = month(curdate())" +
+            "\tinvoice iv on t.invoice_id = iv.invoice_id\n" +
+            "where month(iv.date_payment) = month(curdate())\n" +
             "group by\n" +
             "\tmt.movie_type_id;", nativeQuery = true)
     List<MovieTopType> getTopTypeMovieByMonth();
@@ -363,55 +366,61 @@ public interface StatisticRepository extends PagingAndSortingRepository<Movie, I
             "LEFT JOIN\n" +
             "\tticket t on s.seat_id = t.seat_id\n" +
             "LEFT JOIN\n" +
-            "\tshow_time st on cs.show_time_id = st.show_time_id\n" +
-            "where year(st.show_date) = year(curdate())" +
+            "\tinvoice iv on t.invoice_id = iv.invoice_id\n" +
+            "where year(iv.date_payment) = year(curdate())\n" +
             "group by\n" +
             "\tmt.movie_type_id;", nativeQuery = true)
     List<MovieTopType> getTopTypeMovieByYear();
 
-    @Query(value = "select\n" +
-            "\tst.movie_time as showTimeDetail,\n" +
-            "    COUNT(t.ticket_id) as showTimeTotalTicket\n" +
-            "from\n" +
-            "\tshow_time st\n" +
-            "join\n" +
-            "\tcalendar_show cs on st.show_time_id = cs.show_time_id\n" +
-            "join\n" +
-            "\tseat s on cs.calendar_show_id = s.calendar_show_id\n" +
-            "join \n" +
-            "\tticket t on s.seat_id = t.seat_id\n" +
-            "where date(st.show_date) = date(curdate())\n" +
-            "group by\n" +
-            "st.show_time_id;", nativeQuery = true)
+    @Query(value = "SELECT \n" +
+            "    st.movie_time AS showTimeDetail,\n" +
+            "    COUNT(t.ticket_id) AS showTimeTotalTicket\n" +
+            "FROM\n" +
+            "    show_time st\n" +
+            "        JOIN\n" +
+            "    calendar_show cs ON st.show_time_id = cs.show_time_id\n" +
+            "        JOIN\n" +
+            "    seat s ON cs.calendar_show_id = s.calendar_show_id\n" +
+            "        JOIN\n" +
+            "    ticket t ON s.seat_id = t.seat_id\n" +
+            "        JOIN\n" +
+            "    invoice iv ON t.invoice_id = iv.invoice_id\n" +
+            "WHERE\n" +
+            "    date(iv.date_payment) = date(CURDATE())\n" +
+            "GROUP BY st.show_time_id;", nativeQuery = true)
     List<ShowTimeTop> getTopShowTimeByDate();
-    @Query(value = "select\n" +
-            "\tst.movie_time as showTimeDetail,\n" +
-            "    COUNT(t.ticket_id) as showTimeTotalTicket\n" +
-            "from\n" +
-            "\tshow_time st\n" +
-            "join\n" +
-            "\tcalendar_show cs on st.show_time_id = cs.show_time_id\n" +
-            "join\n" +
-            "\tseat s on cs.calendar_show_id = s.calendar_show_id\n" +
-            "join \n" +
-            "\tticket t on s.seat_id = t.seat_id\n" +
-            "where month(st.show_date) = month(curdate())\n" +
-            "group by\n" +
-            "st.show_time_id;", nativeQuery = true)
+    @Query(value = "SELECT \n" +
+            "    st.movie_time AS showTimeDetail,\n" +
+            "    COUNT(t.ticket_id) AS showTimeTotalTicket\n" +
+            "FROM\n" +
+            "    show_time st\n" +
+            "        JOIN\n" +
+            "    calendar_show cs ON st.show_time_id = cs.show_time_id\n" +
+            "        JOIN\n" +
+            "    seat s ON cs.calendar_show_id = s.calendar_show_id\n" +
+            "        JOIN\n" +
+            "    ticket t ON s.seat_id = t.seat_id\n" +
+            "        JOIN\n" +
+            "    invoice iv ON t.invoice_id = iv.invoice_id\n" +
+            "WHERE\n" +
+            "    month(iv.date_payment) = month(CURDATE())\n" +
+            "GROUP BY st.show_time_id;", nativeQuery = true)
     List<ShowTimeTop> getTopShowTimeByMonth();
-    @Query(value = "select\n" +
-            "\tst.movie_time as showTimeDetail,\n" +
-            "    COUNT(t.ticket_id) as showTimeTotalTicket\n" +
-            "from\n" +
-            "\tshow_time st\n" +
-            "join\n" +
-            "\tcalendar_show cs on st.show_time_id = cs.show_time_id\n" +
-            "join\n" +
-            "\tseat s on cs.calendar_show_id = s.calendar_show_id\n" +
-            "join \n" +
-            "\tticket t on s.seat_id = t.seat_id\n" +
-            "where year(st.show_date) = year(curdate())\n" +
-            "group by\n" +
-            "st.show_time_id;", nativeQuery = true)
+    @Query(value = "SELECT \n" +
+            "    st.movie_time AS showTimeDetail,\n" +
+            "    COUNT(t.ticket_id) AS showTimeTotalTicket\n" +
+            "FROM\n" +
+            "    show_time st\n" +
+            "        JOIN\n" +
+            "    calendar_show cs ON st.show_time_id = cs.show_time_id\n" +
+            "        JOIN\n" +
+            "    seat s ON cs.calendar_show_id = s.calendar_show_id\n" +
+            "        JOIN\n" +
+            "    ticket t ON s.seat_id = t.seat_id\n" +
+            "        JOIN\n" +
+            "    invoice iv ON t.invoice_id = iv.invoice_id\n" +
+            "WHERE\n" +
+            "    year(iv.date_payment) = year(CURDATE())\n" +
+            "GROUP BY st.show_time_id;", nativeQuery = true)
     List<ShowTimeTop> getTopShowTimeByYear();
 }

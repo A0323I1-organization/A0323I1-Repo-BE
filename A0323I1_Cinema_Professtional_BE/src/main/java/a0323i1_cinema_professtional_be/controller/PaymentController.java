@@ -4,6 +4,7 @@ import a0323i1_cinema_professtional_be.config.ConfigVNPAY;
 import a0323i1_cinema_professtional_be.dto.payment.PaymentDTO;
 import a0323i1_cinema_professtional_be.entity.Invoice;
 import a0323i1_cinema_professtional_be.service.customer.CustomerService;
+import a0323i1_cinema_professtional_be.service.employee.EmployeeService;
 import a0323i1_cinema_professtional_be.service.invoice.InvoiceService;
 import a0323i1_cinema_professtional_be.service.seat.SeatService;
 import a0323i1_cinema_professtional_be.service.sendemail.SendEmailService;
@@ -36,6 +37,8 @@ public class PaymentController {
     private final TicketService ticketService;
 
     private final SendEmailService sendEmailService;
+
+    private final EmployeeService employeeService;
 
     private final SeatService seatService;
 
@@ -144,7 +147,8 @@ public class PaymentController {
             DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMddHHmmss");
             LocalDateTime dateTime = LocalDateTime.parse(date, formatter);
             dateTime = dateTime.withSecond(0);
-            invoiceService.createInvoice(dateTime, 1, 1);
+
+            invoiceService.createInvoice(dateTime, 1);
             Invoice invoice = invoiceService.getInvoiceByCustomerId(dateTime, 1);
             for (Integer id : seatId) {
                 seatService.bookSeat(true, id);
