@@ -22,6 +22,7 @@ public class  LoggerEmployee {
         System.out.println("Number of visitors: " + count);
         System.out.println("------------------------------------------------------------------");
     }
+    // 12344
     @AfterReturning("execution(* a0323i1_cinema_professtional_be.controller.EmployeeController.deleteById(..))")
     public void loggingException(JoinPoint joinPoint) {
         System.out.println("------------------------------------------------------------------");
