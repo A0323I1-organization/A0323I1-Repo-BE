@@ -14,6 +14,7 @@ import org.springframework.stereotype.Component;
 @EnableAspectJAutoProxy
 
 public class  LoggerEmployee {
+    // okokokok 12345
     static int count =0;
     @Before("execution(* a0323i1_cinema_professtional_be.controller.EmployeeController.findAll(..))")
     public void countRequest(){
